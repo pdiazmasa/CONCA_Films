@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "titulo": "Semana Santa de Cuenca 2026",
+    "categoria": "video",
+    "imagen": "/uploads/videos/Semana Santa portada.PNG",
+    "url": "https://youtu.be/U4xjYpkRQ50"
+  },
+  {
+    "id": 2,
+    "titulo": "Anuncio Nissan Terrano II",
+    "categoria": "video",
+    "imagen": "/uploads/videos/nissan.webp",
+    "url": "https://youtu.be/SMz80edp1T0"
+  },
+  {
+    "id": 4,
+    "titulo": "Cena Graduación Pepas 2025/26",
+    "categoria": "video",
+    "imagen": "/uploads/videos/cena_graduacion.png",
+    "url": "https://youtu.be/BVuYc5hamlY"
+  },
+  {
+    "id": 5,
+    "titulo": "Reportaje fotográfico (ejemplo)",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/torres.PNG",
+    "imagenes": [
+      "/uploads/fotos/torres.PNG"]
+  },
+  {
+    "id": 6,
+    "titulo": "Paellas Universitarias 2026",
+    "categoria": "video",
+    "imagen": "/uploads/videos/paellas2026.png",
+    "url": "https://youtu.be/P3_xvXp_qbc"
+  }
+]
