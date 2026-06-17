@@ -22,11 +22,16 @@
   },
   {
     "id": 5,
-    "titulo": "Reportaje fotográfico (ejemplo)",
+    "titulo": "Concurso Nacional de Saltos 2025",
     "categoria": "foto",
-    "imagen": "/uploads/fotos/torres.PNG",
+    "imagen": "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/31082025-P1088992.jpg",
     "imagenes": [
-      "/uploads/fotos/torres.PNG"]
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077802.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077820.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077929.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1088225.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1088258.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/31082025-P1088992.jpg"]
   },
   {
     "id": 6,
