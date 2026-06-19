@@ -6,4 +6,5 @@ export const CLIENTS = [
   { name: 'Paellas Universitarias de Cuenca', logo: '/uploads/logos/paellas.png' },
   { name: 'Palapa', logo: '/uploads/logos/palapa.png' },
   { name: 'Magico Man', logo: '/uploads/logos/magicoman.jpg' },
+  { name: 'Mala Producciones', logo: '/uploads/logos/mala.png' },
 ]

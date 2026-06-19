@@ -22,11 +22,16 @@
   },
   {
     "id": 5,
-    "titulo": "Reportaje fotográfico (ejemplo)",
+    "titulo": "Concurso Nacional de Saltos 2025",
     "categoria": "foto",
-    "imagen": "/uploads/fotos/torres.PNG",
+    "imagen": "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/31082025-P1088992.jpg",
     "imagenes": [
-      "/uploads/fotos/torres.PNG"]
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077802.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077820.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1077929.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1088225.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/29082025-P1088258.jpg",
+      "/uploads/fotos/5. Fotos Concurso Nacional de Saltos 2025/31082025-P1088992.jpg"]
   },
   {
     "id": 6,
@@ -34,5 +39,101 @@
     "categoria": "video",
     "imagen": "/uploads/videos/paellas2026.png",
     "url": "https://youtu.be/P3_xvXp_qbc"
+  },
+  {
+    "id": 7,
+    "titulo": "Baja TT Cuenca 2025",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/7. Fotos Baja TT Cuenca 2025/P1099493.jpg",
+    "imagenes": [
+      "/uploads/fotos/7. Fotos Baja TT Cuenca 2025/P1099493.jpg",
+      "/uploads/fotos/7. Fotos Baja TT Cuenca 2025/P1099421.jpg",
+      "/uploads/fotos/7. Fotos Baja TT Cuenca 2025/P1099543.jpg",
+      "/uploads/fotos/7. Fotos Baja TT Cuenca 2025/P1099633.jpg"]
+  },
+  {
+    "id": 8,
+    "titulo": "Baja TT Cuenca 2026",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/DSC04527.jpg",
+    "imagenes": [
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/DSC04527.jpg",
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/DSC04553.jpg",
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/DSC04596.jpg",
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/DSC04763.jpg",
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/P1199813.jpg",
+      "/uploads/fotos/8. Fotos Baja TT Cuenca 2026/P1199821.jpg"]
+  },
+  {
+    "id": 9,
+    "titulo": "Fiesta Graduaciones 2026",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/DSC06650.jpg",
+    "imagenes": [
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/DSC06650.jpg",
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/DSC06685.jpg",
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/DSC06701.jpg",
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/P1200621.jpg",
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/P1200631.jpg",
+      "/uploads/fotos/9. Fotos Fiesta Graduaciones 2026/P1200800.jpg"]
+  },
+  {
+    "id": 10,
+    "titulo": "Paellas Universitarias 2026",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/10. Fotos Paellas Universitarias 2026/P1233408.jpg",
+    "imagenes": [
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/DSC00056.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/DSC00600.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/DSC00842-3.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/DSC01206.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/P1222449-2.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/P1233408.jpg",
+      "/uploads/fotos/10. Fotos Paellas Universitarias 2026/P1233599.jpg"]
+  },
+  {
+    "id": 11,
+    "titulo": "Cena de Graduación Sagrada Familia 2026",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC06067.jpg",
+    "imagenes": [
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC05383-2.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC05479-2.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC05862-2.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC06015.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC06067.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/DSC06343.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/P149.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/P1200276.jpg",
+      "/uploads/fotos/11. Fotos Graduaciones Sagrada Familia 2026/P1200566.jpg"]
+  },
+  {
+    "id": 12,
+    "titulo": "Fiesta Palapa x MALA",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/12. Fotos Palapa x MALA/DSC08412-2.jpg",
+    "imagenes": [
+      "/uploads/fotos/12. Fotos Palapa x MALA/DSC08412-2.jpg",
+      "/uploads/fotos/12. Fotos Palapa x MALA/DSC08090.jpg",
+      "/uploads/fotos/12. Fotos Palapa x MALA/DSC08324-2.jpg",
+      "/uploads/fotos/12. Fotos Palapa x MALA/P1211575.jpg",
+      "/uploads/fotos/12. Fotos Palapa x MALA/P1211748.jpg",
+      "/uploads/fotos/12. Fotos Palapa x MALA/P1211807.jpg"]
+  },
+  {
+    "id": 13,
+    "titulo": "Semana Santa 2026",
+    "categoria": "foto",
+    "imagen": "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00587.jpg",
+    "imagenes": [
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00587.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00701-2.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00713.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00840.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC00916.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/DSC01118.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/P1155374.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/P1166257_edit.jpg",
+      "/uploads/fotos/13. Fotos Semana Santa 2026/P1166560_edit.jpg"]
   }
 ]

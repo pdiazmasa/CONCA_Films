@@ -56,7 +56,7 @@ export default function Navbar() {
       >
         {/* Logo — left column */}
         <Link to="/" className="justify-self-start flex-shrink-0 py-3" aria-label="CONCA Films — inicio">
-          <img src={LOGO} alt="CONCA Films" style={{ height: '22px', width: 'auto', display: 'block' }} />
+          <img src={LOGO} alt="CONCA Films" style={{ height: 'auto', maxHeight: '22px', width: 'auto', display: 'block' }} />
         </Link>
 
         {/* Center nav — desktop, centered in the auto column */}
