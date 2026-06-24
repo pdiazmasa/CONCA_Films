@@ -135,5 +135,12 @@
       "/uploads/fotos/13-fotos-semana-santa-2026/P1155374.jpg",
       "/uploads/fotos/13-fotos-semana-santa-2026/P1166257_edit.jpg",
       "/uploads/fotos/13-fotos-semana-santa-2026/P1166560_edit.jpg"]
+  },
+  {
+    "id": 14,
+    "titulo": "¿Por qué las teclas blancas y las negras no son iguales?",
+    "categoria": "video",
+    "imagen": "/uploads/videos/teclas_blancas_negras.png",
+    "url": "https://www.youtube.com/shorts/PQU-Cp-KyfA"
   }
 ]
