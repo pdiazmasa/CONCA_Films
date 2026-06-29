@@ -7,4 +7,6 @@ export const CLIENTS = [
   { name: 'Palapa', logo: '/uploads/logos/palapa.png' },
   { name: 'Magico Man', logo: '/uploads/logos/magicoman.jpg' },
   { name: 'Mala Producciones', logo: '/uploads/logos/mala.png' },
+  { name: 'Hackeo Productions', logo: '/uploads/logos/hackeo.jpg' },
+  { name: 'Manchamar', logo: '/uploads/logos/manchamar.jpg' },
 ]

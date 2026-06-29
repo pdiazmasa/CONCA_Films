@@ -3,6 +3,7 @@ import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import ThreeBackground from '../components/LazyThree'
 import { YouTubeIcon, InstagramIcon, LinkedInIcon } from '../components/icons'
+import useSeo from '../hooks/useSeo'
 
 const SOCIALS = [
   { label: 'YouTube', href: 'https://www.youtube.com/@ConcaFilms', icon: <YouTubeIcon size={20} /> },
@@ -11,6 +12,12 @@ const SOCIALS = [
 ]
 
 export default function Contacto() {
+  useSeo({
+    title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
+    description:
+      'Cuéntanos tu proyecto de vídeo o fotografía. Productora audiovisual en Cuenca disponible para spots, eventos y festivales en toda España. Escríbenos a concafilms@gmail.com.',
+    path: '/contacto',
+  })
   return (
     <Page>
       <section className="relative min-h-screen flex items-center justify-center px-8 py-32 overflow-hidden bg-black">

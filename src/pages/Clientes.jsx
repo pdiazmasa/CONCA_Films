@@ -5,8 +5,15 @@ import SectionReveal from '../components/SectionReveal'
 import ClientLogo from '../components/ClientLogo'
 import { ArrowUpRight } from '../components/icons'
 import { CLIENTS } from '../data/clients'
+import useSeo from '../hooks/useSeo'
 
 export default function Clientes() {
+  useSeo({
+    title: 'Clientes — Marcas, eventos y festivales | CONCA Films Cuenca',
+    description:
+      'Marcas, artistas, eventos y fiestas culturales que han confiado en CONCA Films para su producción audiovisual y fotografía en Cuenca y toda España.',
+    path: '/clientes',
+  })
   return (
     <Page>
       {/* Intro */}

@@ -3,6 +3,7 @@ import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import { InstagramIcon, LinkedInIcon } from '../components/icons'
+import useSeo from '../hooks/useSeo'
 
 const TEAM = [
   {
@@ -23,7 +24,7 @@ const TEAM = [
   {
     name: 'Juan Chacón de la Fuente',
     role: 'Fotógrafo y videógrafo',
-    bio: 'Responsable de fotografía y vídeo en eventos.',
+    bio: 'Responsable de fotografía.',
     photo: '/uploads/equipo/juan.jpg',
     instagram: 'https://www.instagram.com/chshots_/',
     instagramHandle: '@chshots_',
@@ -32,24 +33,29 @@ const TEAM = [
 
 const EQUIPO = [
   {
+    title: 'Canon EOS R6 Mark II',
+    detail: 'Objetivos RF 50 mm f1.8 · RF 16 mm f2.8',
+    photo: '/uploads/material/canon_eos_r6.png',
+  },
+  {
     title: 'Lumix DC-GH5',
     detail: 'Objetivos 12-35 mm f2.8 II · 35-100 mm f2.8 II · 20 mm f1.7 II',
-    photo: '/uploads/Lumix.png',
+    photo: '/uploads/material/Lumix.png',
   },
   {
     title: 'Sony a7 IV',
     detail: 'Sigma 28-70 f2.8 · Sony 70-200 GM',
-    photo: '/uploads/sony.png',
+    photo: '/uploads/material/sony.png',
   },
   {
     title: 'DJI Mini 5 Pro',
     detail: 'Dron cinematográfico con filtros ND',
-    photo: '/uploads/dron.png',
+    photo: '/uploads/material/dron.png',
   },
   {
     title: 'Removu K1',
     detail: 'Cámara estabilizadora 4K de mano',
-    photo: '/uploads/removu.png',
+    photo: '/uploads/material/removu.png',
   },
 ]
 
@@ -101,6 +107,12 @@ function EquipPhoto({ item }) {
 }
 
 export default function Nosotros() {
+  useSeo({
+    title: 'Nosotros — Equipo de producción audiovisual en Cuenca | CONCA Films',
+    description:
+      'Somos Pedro, Pablo y Juan: equipo de producción audiovisual y fotografía en Cuenca con equipo propio. Cámaras Canon, Lumix y Sony, dron y estabilizadores para vídeo y eventos.',
+    path: '/nosotros',
+  })
   return (
     <Page>
       {/* Intro + team */}
@@ -112,9 +124,9 @@ export default function Nosotros() {
         />
         <SectionReveal delay={0.25}>
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-3xl">
-            CONCA Films nació con un objetivo claro: hacer producción audiovisual profesional sin las
-            rigideces de una gran productora. Trato directo, trabajo personalizado y calidad que se nota.
-            Operamos en toda España para marcas, artistas, eventos y fiestas culturales.
+            CONCA Films nació con el objetivo de hacer producción audiovisual profesional sin los
+            problemas de una gran productora. Trato cercano y trabajo personalizado. Operamos en toda
+            España para marcas, artistas, eventos y fiestas culturales.
           </p>
         </SectionReveal>
 
@@ -177,7 +189,7 @@ export default function Nosotros() {
         </SectionReveal>
         <SectionReveal delay={0.2}>
           <p className="mt-6 text-base text-white/50 font-body font-light leading-relaxed max-w-[48ch]">
-            No improvisamos. Nuestro material es parte de nuestra promesa.
+            Con nuestro equipo nos adaptamos a cada caso.
           </p>
         </SectionReveal>
 

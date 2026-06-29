@@ -6,6 +6,7 @@ import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import ProjectCard from '../components/ProjectCard'
 import Lightbox from '../components/Lightbox'
+import useSeo from '../hooks/useSeo'
 
 const FILTERS = [
   { key: 'video', label: 'Vídeo' },
@@ -15,6 +16,12 @@ const VALID = FILTERS.map((f) => f.key)
 const DEFAULT = 'video'
 
 export default function Portfolio() {
+  useSeo({
+    title: 'Portfolio — Vídeo y fotografía de eventos y festivales | CONCA Films',
+    description:
+      'Trabajos de CONCA Films: spots, vídeos de evento, cobertura de festivales y reportaje fotográfico en Cuenca y toda España. Mira nuestro portfolio audiovisual.',
+    path: '/portfolio',
+  })
   const [searchParams, setSearchParams] = useSearchParams()
   const catParam = searchParams.get('cat')
   const [active, setActive] = useState(VALID.includes(catParam) ? catParam : DEFAULT)

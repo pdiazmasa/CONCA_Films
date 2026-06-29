@@ -8,6 +8,7 @@ import ThreeBackground from '../components/LazyThree'
 import ClientLogo from '../components/ClientLogo'
 import { CLIENTS } from '../data/clients'
 import { ArrowUpRight, ArrowRight, VideoIcon, CameraIcon } from '../components/icons'
+import useSeo from '../hooks/useSeo'
 
 const HERO_IMG_1 = '/uploads/Image 1.png'
 const HERO_IMG_2 = '/uploads/Image 2.png'
@@ -16,7 +17,7 @@ const SERVICIOS = [
   {
     icon: <VideoIcon />,
     title: 'Producción de vídeo',
-    body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Rodaje y postproducción propios, sin subcontratar.',
+    body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Rodaje y postproducción propios.',
     tags: ['Spots', 'Eventos', 'Edición'],
   },
   {
@@ -92,7 +93,7 @@ function Hero() {
           />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <BlurText
-              text="Vídeos que hacen que tu marca se vea profesional"
+              text="Contenido profesional para tu marca"
               className="text-4xl md:text-5xl lg:text-[4.5rem] font-heading italic text-white leading-[0.9] max-w-4xl mx-auto tracking-[-3px]"
               justify="center"
             />
@@ -152,21 +153,21 @@ function NosotrosResumen() {
             <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Quiénes somos</p>
           </div>
           <BlurText
-            text="No hacemos trabajo mediocre."
+            text="¿Nuestro lema? No hacemos trabajo mediocre"
             className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-2px]"
             justify="left"
           />
         </SectionReveal>
         <SectionReveal delay={0.2}>
           <p className="mt-5 font-heading italic text-white/60 text-2xl md:text-3xl tracking-[-1px]">
-            Cada proyecto es diferente. Lo tratamos como tal.
+            Nos adaptamos a cada proyecto
           </p>
         </SectionReveal>
         <SectionReveal delay={0.35}>
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-2xl">
-            Somos Pedro, Pablo y Juan. Un equipo de tres con equipo propio, criterio claro y las cosas
-            a tiempo. Trabajamos con marcas, artistas, eventos y fiestas culturales en toda España, sin
-            intermediarios ni sorpresas.
+            Somos Pedro, Pablo y Juan. Un equipo de tres con equipo propio y plazos de entrega
+            marcados. Trabajamos con marcas, artistas, eventos y fiestas culturales en toda España, sin
+            intermediarios.
           </p>
         </SectionReveal>
         <SectionReveal delay={0.5}>
@@ -312,6 +313,12 @@ function CTAFinal() {
 }
 
 export default function Home() {
+  useSeo({
+    title: 'CONCA Films | Productora audiovisual y fotografía en Cuenca',
+    description:
+      'Productora audiovisual en Cuenca. Vídeo profesional, fotografía, spots publicitarios y cobertura de eventos y festivales en toda España. Calidad profesional, equipo propio y plazos marcados.',
+    path: '/',
+  })
   return (
     <Page>
       <Hero />

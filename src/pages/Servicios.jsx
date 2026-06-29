@@ -4,13 +4,14 @@ import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import { ArrowRight } from '../components/icons'
+import useSeo from '../hooks/useSeo'
 
 const SERVICES = [
   {
     n: '01',
     kicker: 'Producción de vídeo',
-    title: 'Lo que grabamos, se queda.',
-    body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con equipo propio, sin subcontratar ni una sola fase. El resultado: piezas que representan tu marca como merece y que funcionan donde tienen que funcionar.',
+    title: 'Vídeos con un objetivo.',
+    body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con nuestro equipo propio, sin necesitar ayuda externa. El resultado: piezas con objetivo que generan impacto.',
     tags: ['Spots', 'Eventos', 'Edición'],
     image: '/uploads/Semana Santa portada.PNG',
     cat: 'video',
@@ -19,8 +20,8 @@ const SERVICES = [
   {
     n: '02',
     kicker: 'Reportaje fotográfico',
-    title: 'Cada imagen tiene un porqué.',
-    body: 'Cobertura fotográfica profesional de eventos, fiestas culturales y conciertos. Buscamos la luz, el momento y el encuadre que cuentan algo — no disparamos por disparar. Te entregamos una selección cuidada, editada y lista para publicar.',
+    title: 'Imágenes de calidad.',
+    body: 'Cobertura fotográfica profesional de eventos, fiestas culturales y conciertos. Con nuestro material ofrecemos imágenes de calidad profesional que editamos nosotros mismos. Te entregamos una selección cuidada, editada y lista para publicar.',
     tags: ['Eventos', 'Festividades', 'Conciertos'],
     image: '/uploads/torres.PNG',
     cat: 'foto',
@@ -50,6 +51,12 @@ function ServiceImage({ service }) {
 }
 
 export default function Servicios() {
+  useSeo({
+    title: 'Servicios — Vídeo, fotografía y spots publicitarios | CONCA Films',
+    description:
+      'Producción de vídeo, spots publicitarios, reportaje fotográfico y cobertura de eventos y festivales en Cuenca y toda España. Rodaje y postproducción con equipo propio.',
+    path: '/servicios',
+  })
   return (
     <Page>
       {/* Intro */}
@@ -59,7 +66,7 @@ export default function Servicios() {
           <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Qué ofrecemos</p>
         </div>
         <BlurText
-          text="Lo que hacemos, lo hacemos bien."
+          text="No hacemos trabajo mediocre"
           className="font-heading italic text-white text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] max-w-4xl"
           justify="left"
         />

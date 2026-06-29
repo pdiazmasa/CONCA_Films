@@ -31,6 +31,9 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <div className="bg-black min-h-screen">
+      {/* Textura cinematográfica: grano de película + viñeteado */}
+      <div className="cinematic-vignette" aria-hidden="true" />
+      <div className="film-grain" aria-hidden="true" />
       <CustomCursor />
       <ScrollToTop />
       <Navbar />
