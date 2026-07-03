@@ -142,5 +142,12 @@
     "categoria": "video",
     "imagen": "/uploads/videos/teclas_blancas_negras.png",
     "url": "https://www.youtube.com/shorts/PQU-Cp-KyfA"
+  },
+  {
+    "id": 15,
+    "titulo": "Patanegra F.S - Spot oficial 2026-27",
+    "categoria": "video",
+    "imagen": "/uploads/videos/patanegra_fs.png",
+    "url": "https://www.youtube.com/shorts/Y-sPPsDrlRs"
   }
 ]
