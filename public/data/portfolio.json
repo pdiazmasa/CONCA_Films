@@ -152,14 +152,14 @@
   },
   {
     "id": 16,
-    "titulo": "Lavamelotú - Vídeo de prueba",
+    "titulo": "Lavamelotú - Vídeo 1",
     "categoria": "video",
     "imagen": "/uploads/videos/lavamelotu_0.png",
     "url": "https://www.youtube.com/shorts/PZXqIJmE3qk"
   },
   {
     "id": 17,
-    "titulo": "Comida en Torrejoncillo",
+    "titulo": "Fotografía de comida",
     "categoria": "foto",
     "imagen": "/uploads/fotos/16-fotos-comida-torrejoncillo/A99A7341.jpg",
     "imagenes": [
