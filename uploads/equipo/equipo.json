@@ -1,0 +1,25 @@
+[
+  {
+    "nombre": "Pedro Díaz Masa Valencia",
+    "rol": "Guionista y editor profesional",
+    "bio": "Especialista en rodaje y postproducción.",
+    "foto": "pedro.jpg",
+    "linkedin": "https://www.linkedin.com/in/pedrodiazmasa/"
+  },
+  {
+    "nombre": "Pablo Serrano Morcillo",
+    "rol": "Videógrafo y piloto de dron",
+    "bio": "Responsable de vídeo y tomas aéreas.",
+    "foto": "pablo.jpg",
+    "instagram": "https://www.instagram.com/serrano.photo_/",
+    "instagramHandle": "@serrano.photo_"
+  },
+  {
+    "nombre": "Juan Chacón de la Fuente",
+    "rol": "Fotógrafo y videógrafo",
+    "bio": "Responsable de fotografía.",
+    "foto": "juan.jpg",
+    "instagram": "https://www.instagram.com/chshots_/",
+    "instagramHandle": "@chshots_"
+  }
+]
