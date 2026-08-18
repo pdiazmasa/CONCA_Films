@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { YouTubeIcon, InstagramIcon, LinkedInIcon } from './icons'
+import useMarca from '../hooks/useMarca'
 
 const LINKS = [
   { label: 'Nosotros', to: '/nosotros' },
@@ -15,9 +16,8 @@ const SOCIALS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/concafilms/', icon: <LinkedInIcon /> },
 ]
 
-const LOGO = '/uploads/Horizontal sin fondo 4000x338.png'
-
 export default function Footer() {
+  const { logoHorizontal: LOGO } = useMarca()
   return (
     <footer
       className="border-t border-white/[0.06] px-8 md:px-16 lg:px-20 py-12"

@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "Canon EOS R6 Mark II",
+    "detalle": "Objetivos RF 50 mm f1.8 · RF 16 mm f2.8",
+    "foto": "canon-eos-r6.png"
+  },
+  {
+    "titulo": "Lumix DC-GH5",
+    "detalle": "Objetivos 12-35 mm f2.8 II · 35-100 mm f2.8 II · 20 mm f1.7 II",
+    "foto": "lumix-gh5.png"
+  },
+  {
+    "titulo": "Lumix DC-GH5 II",
+    "detalle": "Objetivos Leica 12-60 mm f2.8-4.0 · Lumix G 25 mm f1.7",
+    "foto": "lumix-gh5-ii.png"
+  },
+  {
+    "titulo": "Sony a7 IV",
+    "detalle": "Sigma 28-70 f2.8 · Sony 70-200 GM",
+    "foto": "sony-a7-iv.png"
+  },
+  {
+    "titulo": "DJI Mini 5 Pro",
+    "detalle": "Dron cinematográfico con filtros ND",
+    "foto": "dji-mini-5-pro.png"
+  },
+  {
+    "titulo": "Removu K1",
+    "detalle": "Cámara estabilizadora 4K de mano",
+    "foto": "removu-k1.png"
+  }
+]

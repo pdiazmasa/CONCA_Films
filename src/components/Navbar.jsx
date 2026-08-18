@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import useMarca from '../hooks/useMarca'
 
 const LINKS = [
   { label: 'Nosotros', to: '/nosotros' },
@@ -10,9 +11,8 @@ const LINKS = [
   { label: 'Contacto', to: '/contacto' },
 ]
 
-const LOGO = '/uploads/Horizontal sin fondo 4000x338.png'
-
 export default function Navbar() {
+  const { logoHorizontal: LOGO } = useMarca()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()

@@ -15,6 +15,23 @@ const FILTERS = [
 const VALID = FILTERS.map((f) => f.key)
 const DEFAULT = 'video'
 
+// Orden de las filas por temática, distinto según el formato (vídeo/foto).
+// El valor de cada tema debe coincidir EXACTAMENTE (mismo texto) con el
+// campo "tema" del JSON de ese formato (ver JSON_BY_FORMAT). Así, al editar
+// el JSON, el propio texto del tema ya te dice a qué fila va a caer en la
+// web. Un "tema" que no esté en esta lista cae en "Otros".
+const THEMES_BY_FORMAT = {
+  video: ['Spots publicitarios', 'Festivales', 'Creadores de contenido', 'Eventos', 'Deportes', 'Otros'],
+  foto: ['Festivales y discotecas', 'Deportes', 'Eventos', 'Fiestas populares', 'Gastronomía', 'Otros'],
+}
+
+// Cada formato vive en su propio JSON, dentro de la misma carpeta que sus
+// imágenes: los vídeos en uploads/videos/ y las fotos en uploads/fotos/.
+const JSON_BY_FORMAT = {
+  video: 'uploads/videos/portfolio-video.json',
+  foto: 'uploads/fotos/portfolio-foto.json',
+}
+
 export default function Portfolio() {
   useSeo({
     title: 'Portfolio — Vídeo y fotografía de eventos y festivales | CONCA Films',
@@ -25,30 +42,33 @@ export default function Portfolio() {
   const [searchParams, setSearchParams] = useSearchParams()
   const catParam = searchParams.get('cat')
   const [active, setActive] = useState(VALID.includes(catParam) ? catParam : DEFAULT)
-  const [projects, setProjects] = useState(null) // null = loading
-  const [error, setError] = useState(false)
+  // Los proyectos de cada formato se cachean aquí una vez cargados, para no
+  // volver a pedirlos al cambiar de pestaña.
+  const [dataByFormat, setDataByFormat] = useState({ video: null, foto: null })
+  const [errorFormats, setErrorFormats] = useState({})
   const [gallery, setGallery] = useState(null) // project shown in the lightbox
 
   useEffect(() => {
+    if (dataByFormat[active] !== null) return // ya cargado (o cargando)
     let cancelled = false
-    fetch(`${import.meta.env.BASE_URL}data/portfolio.json`)
+    fetch(`${import.meta.env.BASE_URL}${JSON_BY_FORMAT[active]}`)
       .then((r) => {
         if (!r.ok) throw new Error('fetch failed')
         return r.json()
       })
       .then((data) => {
-        if (!cancelled) setProjects(Array.isArray(data) ? data : [])
+        if (!cancelled) setDataByFormat((prev) => ({ ...prev, [active]: Array.isArray(data) ? data : [] }))
       })
       .catch(() => {
         if (!cancelled) {
-          setError(true)
-          setProjects([])
+          setErrorFormats((prev) => ({ ...prev, [active]: true }))
+          setDataByFormat((prev) => ({ ...prev, [active]: [] }))
         }
       })
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [active, dataByFormat])
 
   // Sync the active filter with the URL ?cat (deep links from Servicios).
   useEffect(() => {
@@ -60,9 +80,23 @@ export default function Portfolio() {
     setSearchParams({ cat: key })
   }
 
-  const filtered = useMemo(() => {
-    if (!projects) return []
-    return projects.filter((p) => p.categoria === active)
+  const projects = dataByFormat[active] // null = cargando
+  const error = !!errorFormats[active]
+
+  // Agrupa los proyectos del formato activo por temática, en el orden definido
+  // para ese formato en THEMES_BY_FORMAT. Los proyectos sin `tema` (o con uno
+  // que no esté en la lista) caen en "Otros".
+  const rows = useMemo(() => {
+    const themeOrder = THEMES_BY_FORMAT[active] || []
+    const byTheme = new Map()
+    for (const p of projects || []) {
+      const key = themeOrder.includes(p.tema) ? p.tema : 'Otros'
+      if (!byTheme.has(key)) byTheme.set(key, [])
+      byTheme.get(key).push(p)
+    }
+    return themeOrder
+      .map((label) => ({ key: label, label, items: byTheme.get(label) || [] }))
+      .filter((r) => r.items.length > 0)
   }, [projects, active])
 
   return (
@@ -95,7 +129,7 @@ export default function Portfolio() {
           </div>
         </SectionReveal>
 
-        {/* Grid */}
+        {/* Thematic rows */}
         <div className="mt-8">
           {projects === null ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -112,7 +146,7 @@ export default function Portfolio() {
             </div>
           ) : (
             <AnimatePresence mode="wait">
-              {filtered.length === 0 ? (
+              {rows.length === 0 ? (
                 <motion.div
                   key={`empty-${active}`}
                   initial={{ opacity: 0 }}
@@ -133,10 +167,32 @@ export default function Portfolio() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                  className="flex flex-col gap-12 md:gap-14"
                 >
-                  {filtered.map((p) => (
-                    <ProjectCard key={p.id ?? p.titulo} project={p} onOpenGallery={setGallery} />
+                  {rows.map((row, i) => (
+                    <SectionReveal key={row.key} delay={i * 0.06}>
+                      <div>
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className="red-line" />
+                          <h2 className="font-heading italic text-white text-2xl md:text-3xl tracking-[-0.5px]">
+                            {row.label}
+                          </h2>
+                        </div>
+                        <div
+                          className="flex gap-4 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory"
+                          style={{ WebkitOverflowScrolling: 'touch' }}
+                        >
+                          {row.items.map((p) => (
+                            <div
+                              key={p.id ?? p.titulo}
+                              className="snap-start flex-shrink-0 w-[78vw] xs:w-[320px] sm:w-[340px] md:w-[380px]"
+                            >
+                              <ProjectCard project={p} onOpenGallery={setGallery} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </SectionReveal>
                   ))}
                 </motion.div>
               )}

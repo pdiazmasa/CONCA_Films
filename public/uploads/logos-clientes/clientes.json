@@ -1,0 +1,10 @@
+[
+  { "name": "Festival de Letanías", "logo": "letanias.png", "url": "https://www.instagram.com/letanias_fest/" },
+  { "name": "Paellas Universitarias de Cuenca", "logo": "paellas.png", "url": "https://www.instagram.com/paellasuniversitariascuenca/" },
+  { "name": "Palapa", "logo": "palapa.png", "url": "https://www.instagram.com/lapalapa.cuenca/" },
+  { "name": "Magico Man", "logo": "magicoman.jpg", "url": "https://www.youtube.com/@magicoman9" },
+  { "name": "Mala Producciones", "logo": "mala.png", "url": "https://www.instagram.com/mala.events/" },
+  { "name": "Hackeo Productions", "logo": "hackeo.jpg", "url": "https://hackeo.es/" },
+  { "name": "Manchamar", "logo": "manchamar.jpg", "url": "https://www.instagram.com/mancha.mar/" },
+  { "name": "U.B. Conquense", "logo": "ub-conquense.png", "url": "https://www.ubconquense.es/" }
+]

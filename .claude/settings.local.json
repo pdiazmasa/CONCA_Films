@@ -17,7 +17,9 @@
       "Bash(node \"C:/Users/pdiaz/AppData/Local/Temp/claude/C--Users-pdiaz-OneDrive-4--Proyectos-5--CONCA-Films-web-nueva/77b0a0ce-2caf-4ef4-a7af-c8c7453de4ac/scratchpad/prep-images.mjs\")",
       "Bash(cp \"C:/Users/pdiaz/AppData/Local/Temp/claude/C--Users-pdiaz-OneDrive-4--Proyectos-5--CONCA-Films-web-nueva/77b0a0ce-2caf-4ef4-a7af-c8c7453de4ac/scratchpad/prep-images.mjs\" \"C:/Users/pdiaz/OneDrive/4. Proyectos/5. CONCA Films/web_nueva/scripts/_prep-tmp.mjs\")",
       "Bash(node scripts/_prep-tmp.mjs)",
-      "Bash(rm -f scripts/_prep-tmp.mjs)"
+      "Bash(rm -f scripts/_prep-tmp.mjs)",
+      "Bash(git reset *)",
+      "Bash(git -C \"C:/Users/pdiaz/OneDrive/4. Proyectos/5. CONCA Films/web_nueva\" status --short)"
     ]
   }
 }

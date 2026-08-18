@@ -3,61 +3,22 @@ import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import { InstagramIcon, LinkedInIcon } from '../components/icons'
+import useJson from '../hooks/useJson'
 import useSeo from '../hooks/useSeo'
 
-const TEAM = [
-  {
-    name: 'Pedro Díaz Masa Valencia',
-    role: 'Guionista y editor profesional',
-    bio: 'Especialista en rodaje y postproducción.',
-    photo: '/uploads/equipo/pedro.jpg',
-    linkedin: 'https://www.linkedin.com/in/pedrodiazmasa/',
-  },
-  {
-    name: 'Pablo Serrano Morcillo',
-    role: 'Videógrafo y piloto de dron',
-    bio: 'Responsable de vídeo y tomas aéreas.',
-    photo: '/uploads/equipo/pablo.jpg',
-    instagram: 'https://www.instagram.com/serrano.photo_/',
-    instagramHandle: '@serrano.photo_',
-  },
-  {
-    name: 'Juan Chacón de la Fuente',
-    role: 'Fotógrafo y videógrafo',
-    bio: 'Responsable de fotografía.',
-    photo: '/uploads/equipo/juan.jpg',
-    instagram: 'https://www.instagram.com/chshots_/',
-    instagramHandle: '@chshots_',
-  },
-]
+// Los datos de personas y material viven en JSON dentro de sus propias
+// carpetas de fotos (public/uploads/equipo/equipo.json y
+// public/uploads/material/material.json), junto a las imágenes que usan.
+// Aquí solo se les añade la ruta de la carpeta a cada nombre de archivo.
+function useTeam() {
+  const { data } = useJson('uploads/equipo/equipo.json', [])
+  return data.map((m) => ({ ...m, photo: m.foto ? `/uploads/equipo/${m.foto}` : null }))
+}
 
-const EQUIPO = [
-  {
-    title: 'Canon EOS R6 Mark II',
-    detail: 'Objetivos RF 50 mm f1.8 · RF 16 mm f2.8',
-    photo: '/uploads/material/canon_eos_r6.png',
-  },
-  {
-    title: 'Lumix DC-GH5',
-    detail: 'Objetivos 12-35 mm f2.8 II · 35-100 mm f2.8 II · 20 mm f1.7 II',
-    photo: '/uploads/material/Lumix.png',
-  },
-  {
-    title: 'Sony a7 IV',
-    detail: 'Sigma 28-70 f2.8 · Sony 70-200 GM',
-    photo: '/uploads/material/sony.png',
-  },
-  {
-    title: 'DJI Mini 5 Pro',
-    detail: 'Dron cinematográfico con filtros ND',
-    photo: '/uploads/material/dron.png',
-  },
-  {
-    title: 'Removu K1',
-    detail: 'Cámara estabilizadora 4K de mano',
-    photo: '/uploads/material/removu.png',
-  },
-]
+function useEquipo() {
+  const { data } = useJson('uploads/material/material.json', [])
+  return data.map((m) => ({ ...m, photo: m.foto ? `/uploads/material/${m.foto}` : null }))
+}
 
 function initials(name) {
   return name
@@ -74,7 +35,7 @@ function TeamPhoto({ member }) {
     return (
       <img
         src={member.photo}
-        alt={member.name}
+        alt={member.nombre}
         onError={() => setError(true)}
         className="w-full h-full object-cover object-top"
       />
@@ -82,7 +43,7 @@ function TeamPhoto({ member }) {
   }
   return (
     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A]">
-      <span className="font-heading italic text-5xl text-white/25">{initials(member.name)}</span>
+      <span className="font-heading italic text-5xl text-white/25">{initials(member.nombre)}</span>
     </div>
   )
 }
@@ -93,7 +54,7 @@ function EquipPhoto({ item }) {
     return (
       <img
         src={item.photo}
-        alt={item.title}
+        alt={item.titulo}
         onError={() => setError(true)}
         style={{ width: '100%', height: '160px', objectFit: 'contain', objectPosition: 'center', padding: '16px' }}
       />
@@ -101,12 +62,14 @@ function EquipPhoto({ item }) {
   }
   return (
     <div style={{ height: '160px' }} className="w-full flex items-center justify-center">
-      <span className="font-heading italic text-2xl text-white/20">{item.title}</span>
+      <span className="font-heading italic text-2xl text-white/20">{item.titulo}</span>
     </div>
   )
 }
 
 export default function Nosotros() {
+  const team = useTeam()
+  const equipo = useEquipo()
   useSeo({
     title: 'Nosotros — Equipo de producción audiovisual en Cuenca | CONCA Films',
     description:
@@ -131,17 +94,17 @@ export default function Nosotros() {
         </SectionReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
-          {TEAM.map((member, i) => (
-            <SectionReveal key={member.name} delay={i * 0.12}>
+          {team.map((member, i) => (
+            <SectionReveal key={member.nombre} delay={i * 0.12}>
               <div className="liquid-glass-card rounded-[1.5rem] overflow-hidden flex flex-col h-full transition-transform duration-300 hover:scale-[1.02]">
                 <div className="w-full" style={{ height: '320px' }}>
                   <TeamPhoto member={member} />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <p className="font-heading italic text-white text-2xl tracking-[-0.5px] leading-tight">
-                    {member.name}
+                    {member.nombre}
                   </p>
-                  <p className="text-sm text-white/50 font-body mt-1">{member.role}</p>
+                  <p className="text-sm text-white/50 font-body mt-1">{member.rol}</p>
                   <p className="text-sm text-white/60 font-body font-light leading-relaxed mt-3">{member.bio}</p>
                   {(member.linkedin || member.instagram) && (
                     <div className="mt-4 flex flex-col gap-2">
@@ -194,15 +157,15 @@ export default function Nosotros() {
         </SectionReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
-          {EQUIPO.map((item, i) => (
-            <SectionReveal key={item.title} delay={i * 0.1}>
+          {equipo.map((item, i) => (
+            <SectionReveal key={item.titulo} delay={i * 0.1}>
               <div className="liquid-glass rounded-[1.25rem] overflow-hidden flex flex-col h-full transition-transform duration-300 hover:scale-[1.02]">
                 <div className="w-full bg-[#0A0A0A] flex items-center justify-center">
                   <EquipPhoto item={item} />
                 </div>
                 <div className="p-5 flex flex-col gap-2 flex-1">
-                  <h3 className="font-heading italic text-white text-lg tracking-[-0.5px]">{item.title}</h3>
-                  <p className="text-sm text-white/50 font-body font-light leading-snug flex-1">{item.detail}</p>
+                  <h3 className="font-heading italic text-white text-lg tracking-[-0.5px]">{item.titulo}</h3>
+                  <p className="text-sm text-white/50 font-body font-light leading-snug flex-1">{item.detalle}</p>
                 </div>
               </div>
             </SectionReveal>

@@ -4,10 +4,11 @@ import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import ClientLogo from '../components/ClientLogo'
 import { ArrowUpRight } from '../components/icons'
-import { CLIENTS } from '../data/clients'
+import useClients from '../hooks/useClients'
 import useSeo from '../hooks/useSeo'
 
 export default function Clientes() {
+  const { clients } = useClients()
   useSeo({
     title: 'Clientes — Marcas, eventos y festivales | CONCA Films Cuenca',
     description:
@@ -38,7 +39,7 @@ export default function Clientes() {
       {/* Logos grid */}
       <section className="px-8 md:px-16 lg:px-20 pb-20 max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {CLIENTS.map((client, i) => (
+          {clients.map((client, i) => (
             <SectionReveal key={client.name} delay={i * 0.08}>
               <div className="liquid-glass-card rounded-[1.25rem] h-36 flex items-center justify-center p-4 transition-transform duration-300 hover:scale-[1.02]">
                 <ClientLogo

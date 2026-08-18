@@ -6,12 +6,10 @@ import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import ThreeBackground from '../components/LazyThree'
 import ClientLogo from '../components/ClientLogo'
-import { CLIENTS } from '../data/clients'
+import useClients from '../hooks/useClients'
+import useMarca from '../hooks/useMarca'
 import { ArrowUpRight, ArrowRight, VideoIcon, CameraIcon } from '../components/icons'
 import useSeo from '../hooks/useSeo'
-
-const HERO_IMG_1 = '/uploads/Image 1.png'
-const HERO_IMG_2 = '/uploads/Image 2.png'
 
 const SERVICIOS = [
   {
@@ -29,6 +27,7 @@ const SERVICIOS = [
 ]
 
 function Hero() {
+  const { hero1, hero2, logoPrincipal } = useMarca()
   const { scrollY } = useScroll()
   const bgY = useTransform(scrollY, [0, 700], [0, 150])
   const [showFirst, setShowFirst] = useState(true)
@@ -55,8 +54,8 @@ function Hero() {
     <section className="relative h-screen min-h-[620px] overflow-hidden bg-black">
       {/* Parallax crossfade background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
-        <img src={HERO_IMG_1} alt="" style={{ ...imgStyle, opacity: showFirst ? 1 : 0 }} />
-        <img src={HERO_IMG_2} alt="" style={{ ...imgStyle, opacity: showFirst ? 0 : 1 }} />
+        <img src={hero1} alt="" style={{ ...imgStyle, opacity: showFirst ? 1 : 0 }} />
+        <img src={hero2} alt="" style={{ ...imgStyle, opacity: showFirst ? 0 : 1 }} />
       </motion.div>
 
       {/* Dark overlay for legibility */}
@@ -75,7 +74,7 @@ function Hero() {
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-center">
         <SectionReveal delay={0.1}>
           <img
-            src="/uploads/Logo principal sin fondo.png"
+            src={logoPrincipal}
             alt="CONCA Films"
             className="mx-auto mb-6 md:mb-8 h-24 md:h-32 lg:h-36 w-auto object-contain"
             style={{ maxWidth: '90vw' }}
@@ -240,11 +239,13 @@ function ServiciosResumen() {
 }
 
 function Clientes() {
+  const { clients } = useClients()
   // Build a "half" wide enough to exceed any viewport by repeating the list,
   // then render it twice. The track scrolls -50% (one half), so the loop is
   // seamless and never runs out of logos on wide screens.
-  const half = Array.from({ length: 4 }, () => CLIENTS).flat()
+  const half = Array.from({ length: 4 }, () => clients).flat()
   const loop = [...half, ...half]
+  if (clients.length === 0) return null
   return (
     <section className="bg-[#0A0A0A] border-y border-white/[0.06] py-16 relative z-[2] overflow-hidden">
       <div className="px-8 md:px-16 lg:px-20 mb-10">

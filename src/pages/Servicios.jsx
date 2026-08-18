@@ -4,16 +4,20 @@ import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import { ArrowRight } from '../components/icons'
+import useJson from '../hooks/useJson'
 import useSeo from '../hooks/useSeo'
 
-const SERVICES = [
+// Los textos de cada bloque se quedan en el código (son redacción de la
+// web), pero la imagen de portada sale de public/uploads/servicios/servicios.json
+// — cambia ahí el nombre de archivo para usar otra foto, sin tocar esto.
+const SERVICES_TEXT = [
   {
     n: '01',
     kicker: 'Producción de vídeo',
     title: 'Vídeos con un objetivo.',
     body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con nuestro equipo propio, sin necesitar ayuda externa. El resultado: piezas con objetivo que generan impacto.',
     tags: ['Spots', 'Eventos', 'Edición'],
-    image: '/uploads/Semana Santa portada.PNG',
+    imageKey: 'produccionVideo',
     cat: 'video',
     linkLabel: 'Ver proyectos de vídeo',
   },
@@ -23,7 +27,7 @@ const SERVICES = [
     title: 'Imágenes de calidad.',
     body: 'Cobertura fotográfica profesional de eventos, fiestas culturales y conciertos. Con nuestro material ofrecemos imágenes de calidad profesional que editamos nosotros mismos. Te entregamos una selección cuidada, editada y lista para publicar.',
     tags: ['Eventos', 'Festividades', 'Conciertos'],
-    image: '/uploads/torres.PNG',
+    imageKey: 'reportajeFotografico',
     cat: 'foto',
     linkLabel: 'Ver proyectos de foto',
   },
@@ -51,6 +55,11 @@ function ServiceImage({ service }) {
 }
 
 export default function Servicios() {
+  const { data: servicios } = useJson('uploads/servicios/servicios.json', {})
+  const SERVICES = SERVICES_TEXT.map((s) => ({
+    ...s,
+    image: servicios[s.imageKey] ? `/uploads/servicios/${servicios[s.imageKey]}` : null,
+  }))
   useSeo({
     title: 'Servicios — Vídeo, fotografía y spots publicitarios | CONCA Films',
     description:
