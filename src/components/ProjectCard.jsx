@@ -6,7 +6,12 @@ import { ExternalIcon, GalleryIcon } from './icons'
 //  - `url`               → links out (e.g. YouTube) in a new tab
 //  - neither             → "Próximamente" badge
 // Falls back to a styled placeholder if the cover image fails to load.
-export default function ProjectCard({ project, onOpenGallery }) {
+//
+// `onSelect` fires whenever the card is opened/clicked (gallery or external
+// link alike) — used by the Portfolio page to give each publication its
+// own shareable URL. `highlighted` draws a ring around the card, used when
+// arriving via a direct link to a single publication.
+export default function ProjectCard({ project, onOpenGallery, onSelect, highlighted = false }) {
   const { titulo, imagen, imagenes, url } = project
   const [imgError, setImgError] = useState(false)
 
@@ -14,8 +19,10 @@ export default function ProjectCard({ project, onOpenGallery }) {
   const cover = imagen || (gallery ? imagenes[0] : null)
   const hasImg = cover && !imgError
 
-  const cls =
-    'liquid-glass rounded-[1.25rem] aspect-video relative overflow-hidden group block w-full text-left transition-transform duration-300 hover:scale-[1.02]'
+  const cls = `liquid-glass rounded-[1.25rem] aspect-video relative overflow-hidden group block w-full text-left transition-transform duration-300 hover:scale-[1.02] ${
+    highlighted ? 'ring-2 ring-offset-2 ring-offset-black' : ''
+  }`
+  const style = highlighted ? { '--tw-ring-color': 'var(--color-red)' } : undefined
 
   const inner = (
     <>
@@ -65,9 +72,20 @@ export default function ProjectCard({ project, onOpenGallery }) {
     </>
   )
 
+  const domId = project.id != null ? `pub-${project.id}` : undefined
+
   if (gallery) {
     return (
-      <button type="button" onClick={() => onOpenGallery?.(project)} className={`${cls} cursor-pointer`}>
+      <button
+        id={domId}
+        type="button"
+        onClick={() => {
+          onSelect?.(project)
+          onOpenGallery?.(project)
+        }}
+        className={`${cls} cursor-pointer`}
+        style={style}
+      >
         {inner}
       </button>
     )
@@ -75,11 +93,23 @@ export default function ProjectCard({ project, onOpenGallery }) {
 
   if (url) {
     return (
-      <a href={url} target="_blank" rel="noopener noreferrer" className={`${cls} cursor-pointer`}>
+      <a
+        id={domId}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => onSelect?.(project)}
+        className={`${cls} cursor-pointer`}
+        style={style}
+      >
         {inner}
       </a>
     )
   }
 
-  return <div className={cls}>{inner}</div>
+  return (
+    <div id={domId} className={cls} style={style}>
+      {inner}
+    </div>
+  )
 }
