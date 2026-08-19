@@ -27,17 +27,11 @@ const SERVICIOS = [
 ]
 
 function Hero() {
-  const { hero1, hero2, logoPrincipal } = useMarca()
+  const { heroVideo, heroPoster, logoPrincipal } = useMarca()
   const { scrollY } = useScroll()
   const bgY = useTransform(scrollY, [0, 700], [0, 150])
-  const [showFirst, setShowFirst] = useState(true)
 
-  useEffect(() => {
-    const id = setInterval(() => setShowFirst((s) => !s), 6000)
-    return () => clearInterval(id)
-  }, [])
-
-  const imgStyle = {
+  const videoStyle = {
     position: 'absolute',
     inset: 0,
     width: '120%',
@@ -47,15 +41,21 @@ function Hero() {
     left: '50%',
     top: 0,
     transform: 'translateX(-50%)',
-    transition: 'opacity 2.5s ease-in-out',
   }
 
   return (
     <section className="relative h-screen min-h-[620px] overflow-hidden bg-black">
-      {/* Parallax crossfade background */}
+      {/* Parallax video background */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
-        <img src={hero1} alt="" style={{ ...imgStyle, opacity: showFirst ? 1 : 0 }} />
-        <img src={hero2} alt="" style={{ ...imgStyle, opacity: showFirst ? 0 : 1 }} />
+        <video
+          src={heroVideo}
+          poster={heroPoster}
+          style={videoStyle}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
       </motion.div>
 
       {/* Dark overlay for legibility */}
@@ -63,7 +63,7 @@ function Hero() {
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.7) 100%)',
+            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.82) 100%)',
         }}
       />
 

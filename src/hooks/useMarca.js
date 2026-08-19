@@ -7,8 +7,8 @@ const FALLBACK = {
   logoHorizontal: 'logo-horizontal.png',
   logoPrincipal: 'logo-principal.png',
   isotipo: 'isotipo.png',
-  hero1: 'hero-1.png',
-  hero2: 'hero-2.png',
+  heroVideo: 'hero-montage.mp4',
+  heroPoster: 'hero-poster.jpg',
 }
 
 export default function useMarca() {
@@ -18,7 +18,7 @@ export default function useMarca() {
     logoHorizontal: `/uploads/marca/${m.logoHorizontal}`,
     logoPrincipal: `/uploads/marca/${m.logoPrincipal}`,
     isotipo: `/uploads/marca/${m.isotipo}`,
-    hero1: `/uploads/marca/${m.hero1}`,
-    hero2: `/uploads/marca/${m.hero2}`,
+    heroVideo: `/uploads/marca/${m.heroVideo}`,
+    heroPoster: `/uploads/marca/${m.heroPoster}`,
   }
 }
