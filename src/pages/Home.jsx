@@ -91,7 +91,7 @@ function Hero() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <BlurText
               text="Contenido profesional para tu marca"
-              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[9.5rem] font-heading uppercase font-bold text-white leading-[0.9] max-w-[88vw] lg:max-w-[85vw] mx-auto tracking-[-1px] sm:tracking-[-2px] md:tracking-[-3px] lg:tracking-[-4px]"
+              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[9.5rem] font-['Anton'] uppercase text-white leading-[0.9] max-w-[88vw] lg:max-w-[85vw] mx-auto tracking-normal"
               justify="center"
             />
           </div>
