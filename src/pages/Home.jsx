@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
@@ -33,31 +33,33 @@ const MARCA_FONTS = [
   { fontFamily: "'Barlow', sans-serif", fontStyle: 'normal', fontWeight: 700 },
 ]
 
-// "Marca" cycles through a few different typefaces on a timer for a dynamic,
-// restless feel. The variants stack in the same grid cell so the change
-// never shifts the surrounding layout.
+// "Marca" flicks through a few different typefaces on a fast timer for a
+// dynamic, restless feel — no transition, an instant swap. Every variant is
+// rendered at once, stacked in the same grid cell (only the current one
+// visible), so the box is always sized to the widest of them and "Para tu"
+// never shifts around it.
 function MarcaWord() {
   const [i, setI] = useState(0)
 
   useEffect(() => {
-    const id = setInterval(() => setI((n) => (n + 1) % MARCA_FONTS.length), 1400)
+    const id = setInterval(() => setI((n) => (n + 1) % MARCA_FONTS.length), 120)
     return () => clearInterval(id)
   }, [])
 
   return (
     <span style={{ display: 'inline-grid' }}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={i}
-          initial={{ opacity: 0, y: 10, filter: 'blur(6px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, y: -10, filter: 'blur(6px)' }}
-          transition={{ duration: 0.35, ease: 'easeOut' }}
-          style={{ gridArea: '1 / 1', ...MARCA_FONTS[i] }}
+      {MARCA_FONTS.map((f, idx) => (
+        <span
+          key={idx}
+          style={{
+            gridArea: '1 / 1',
+            ...f,
+            visibility: idx === i ? 'visible' : 'hidden',
+          }}
         >
           Marca
-        </motion.span>
-      </AnimatePresence>
+        </span>
+      ))}
     </span>
   )
 }
