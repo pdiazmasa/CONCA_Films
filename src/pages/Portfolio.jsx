@@ -6,12 +6,9 @@ import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
 import ProjectCard from '../components/ProjectCard'
 import Lightbox from '../components/Lightbox'
+import ThemePanel from '../components/ThemePanel'
 import { ChevronRight } from '../components/icons'
 import useSeo from '../hooks/useSeo'
-
-// A partir de cuántos proyectos en una fila se ofrece el botón "Ver todas".
-// Con menos que esto, el carrusel ya cabe bien y no hace falta desplegarla.
-const EXPAND_THRESHOLD = 6
 
 const FILTERS = [
   { key: 'video', label: 'Vídeo' },
@@ -74,20 +71,8 @@ export default function Portfolio() {
   const [dataByFormat, setDataByFormat] = useState({ video: null, foto: null })
   const [errorFormats, setErrorFormats] = useState({})
   const [gallery, setGallery] = useState(null) // project shown in the lightbox
-  const [expandedRows, setExpandedRows] = useState(() => new Set())
-  const rowRefs = useRef({})
+  const [themePanelKey, setThemePanelKey] = useState(null) // theme key shown in the fullscreen panel
   const handledDeepLink = useRef(false)
-
-  function toggleRow(key, opts = {}) {
-    setExpandedRows((prev) => {
-      const next = new Set(prev)
-      if (opts.force === 'expand') next.add(key)
-      else if (opts.force === 'collapse') next.delete(key)
-      else if (next.has(key)) next.delete(key)
-      else next.add(key)
-      return next
-    })
-  }
 
   useEffect(() => {
     if (dataByFormat[active] !== null) return // ya cargado (o cargando)
@@ -145,13 +130,16 @@ export default function Portfolio() {
   }, [projects, active])
 
   // Da a cada temática y cada publicación su propia URL: /portfolio?cat=..&tema=..&id=..
+  // Pulsar la temática (incluso con una sola publicación) abre el panel a
+  // pantalla completa con todas las suyas — clave en móvil, donde un carrusel
+  // pequeño es incómodo de recorrer.
   function openTheme(row) {
-    toggleRow(row.key, { force: 'expand' })
+    setThemePanelKey(row.key)
     setSearchParams({ cat: active, tema: row.slug })
   }
 
-  function closeTheme(row) {
-    toggleRow(row.key, { force: 'collapse' })
+  function closeTheme() {
+    setThemePanelKey(null)
     const next = new URLSearchParams(searchParams)
     next.delete('tema')
     next.delete('id')
@@ -162,7 +150,9 @@ export default function Portfolio() {
     setSearchParams({ cat: active, tema: row.slug, id: String(project.id) })
   }
 
-  // Deep link al entrar: ?tema= abre y hace scroll a esa fila; ?id= además
+  const themePanelRow = rows.find((r) => r.key === themePanelKey) || null
+
+  // Deep link al entrar: ?tema= abre el panel de esa temática; ?id= además
   // abre la galería (si es un reportaje de foto) o resalta la publicación.
   useEffect(() => {
     if (rows.length === 0) return
@@ -185,11 +175,7 @@ export default function Portfolio() {
     }
     if (targetRow) {
       handledDeepLink.current = true
-      toggleRow(targetRow.key, { force: 'expand' })
-      // Espera al siguiente frame para que la fila ya esté expandida/pintada.
-      requestAnimationFrame(() => {
-        rowRefs.current[targetRow.key]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      })
+      setThemePanelKey(targetRow.key)
     }
   }, [rows, temaParam, idParam, active])
 
@@ -198,7 +184,7 @@ export default function Portfolio() {
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-24 max-w-7xl mx-auto min-h-[80vh]">
         <BlurText
           text="El trabajo habla por sí solo."
-          className="font-heading italic text-white text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] max-w-4xl"
+          className="font-heading uppercase text-white text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] max-w-4xl"
           justify="left"
         />
 
@@ -234,7 +220,7 @@ export default function Portfolio() {
           ) : error ? (
             <div className="liquid-glass rounded-[1.25rem] flex items-center justify-center py-24 text-center">
               <div>
-                <p className="font-heading italic text-white/40 text-2xl">No se pudo cargar el portfolio</p>
+                <p className="font-heading uppercase text-white/40 text-2xl">No se pudo cargar el portfolio</p>
                 <p className="text-sm text-white/30 font-body mt-2">Inténtalo de nuevo en un momento.</p>
               </div>
             </div>
@@ -250,7 +236,7 @@ export default function Portfolio() {
                   className="liquid-glass rounded-[1.25rem] flex items-center justify-center py-24 text-center"
                 >
                   <div>
-                    <p className="font-heading italic text-white/30 text-2xl">Próximamente</p>
+                    <p className="font-heading uppercase text-white/30 text-2xl">Próximamente</p>
                     <p className="text-sm text-white/20 font-body mt-2">Estamos preparando este contenido.</p>
                   </div>
                 </motion.div>
@@ -264,81 +250,53 @@ export default function Portfolio() {
                   className="flex flex-col gap-12 md:gap-14"
                 >
                   {rows.map((row, i) => {
-                    const expanded = expandedRows.has(row.key)
-                    const canExpand = row.items.length > EXPAND_THRESHOLD
                     return (
                       <SectionReveal key={row.key} delay={i * 0.06}>
-                        <div id={`tema-${row.slug}`} ref={(el) => (rowRefs.current[row.key] = el)} style={{ scrollMarginTop: '7rem' }}>
-                          <div className="flex items-center justify-between gap-4 mb-4">
-                            <div className="flex items-center gap-4">
-                              <span className="red-line" />
-                              <h2 className="font-heading italic text-white text-2xl md:text-3xl tracking-[-0.5px]">
+                        <div id={`tema-${row.slug}`} style={{ scrollMarginTop: '7rem' }}>
+                          <button
+                            type="button"
+                            onClick={() => openTheme(row)}
+                            className="flex items-center justify-between gap-4 mb-4 w-full text-left group/theme"
+                          >
+                            <div className="flex items-center gap-4 min-w-0">
+                              <span className="accent-line" />
+                              <h2 className="font-heading uppercase text-white text-2xl md:text-3xl tracking-[-0.5px] group-hover/theme:text-white/80 transition-colors truncate">
                                 {row.label}
                               </h2>
                             </div>
-                            {canExpand && (
-                              <button
-                                type="button"
-                                onClick={() => (expanded ? closeTheme(row) : openTheme(row))}
-                                className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-body text-white/50 hover:text-white transition-colors whitespace-nowrap"
-                              >
-                                {expanded ? 'Ver menos' : `Ver todas (${row.items.length})`}
-                                <span
-                                  className="transition-transform duration-300"
-                                  style={{ transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)' }}
-                                >
-                                  <ChevronRight size={16} />
-                                </span>
-                              </button>
-                            )}
-                          </div>
+                            <span className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-body text-white/50 group-hover/theme:text-white transition-colors whitespace-nowrap">
+                              Ver {row.items.length === 1 ? 'publicación' : `todas (${row.items.length})`}
+                              <ChevronRight size={16} />
+                            </span>
+                          </button>
 
-                          {expanded ? (
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ duration: 0.25 }}
-                              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                          <div className="relative">
+                            <div
+                              className="flex gap-4 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory"
+                              style={{ WebkitOverflowScrolling: 'touch' }}
                             >
                               {row.items.map((p) => (
-                                <ProjectCard
-                                  key={p.id ?? p.titulo}
-                                  project={p}
-                                  onOpenGallery={setGallery}
-                                  onSelect={(proj) => selectProject(proj, row)}
-                                  highlighted={idParam != null && String(p.id) === idParam}
-                                />
-                              ))}
-                            </motion.div>
-                          ) : (
-                            <div className="relative">
-                              <div
-                                className="flex gap-4 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory"
-                                style={{ WebkitOverflowScrolling: 'touch' }}
-                              >
-                                {row.items.map((p) => (
-                                  <div
-                                    key={p.id ?? p.titulo}
-                                    className="snap-start flex-shrink-0 w-[78vw] xs:w-[320px] sm:w-[340px] md:w-[380px]"
-                                  >
-                                    <ProjectCard
-                                      project={p}
-                                      onOpenGallery={setGallery}
-                                      onSelect={(proj) => selectProject(proj, row)}
-                                      highlighted={idParam != null && String(p.id) === idParam}
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                              {/* Fade a la derecha: indica visualmente que hay más para deslizar */}
-                              {row.items.length > 1 && (
                                 <div
-                                  className="pointer-events-none absolute top-0 right-0 bottom-2 w-14 md:w-24"
-                                  style={{ background: 'linear-gradient(to left, #000 0%, transparent 100%)' }}
-                                />
-                              )}
+                                  key={p.id ?? p.titulo}
+                                  className="snap-start flex-shrink-0 w-[78vw] xs:w-[320px] sm:w-[340px] md:w-[380px]"
+                                >
+                                  <ProjectCard
+                                    project={p}
+                                    onOpenGallery={setGallery}
+                                    onSelect={(proj) => selectProject(proj, row)}
+                                    highlighted={idParam != null && String(p.id) === idParam}
+                                  />
+                                </div>
+                              ))}
                             </div>
-                          )}
+                            {/* Fade a la derecha: indica visualmente que hay más para deslizar */}
+                            {row.items.length > 1 && (
+                              <div
+                                className="pointer-events-none absolute top-0 right-0 bottom-2 w-14 md:w-24"
+                                style={{ background: 'linear-gradient(to left, #000 0%, transparent 100%)' }}
+                              />
+                            )}
+                          </div>
                         </div>
                       </SectionReveal>
                     )
@@ -349,6 +307,14 @@ export default function Portfolio() {
           )}
         </div>
       </section>
+
+      <ThemePanel
+        row={themePanelRow}
+        onOpenGallery={setGallery}
+        onSelect={(proj, row) => selectProject(proj, row)}
+        highlightId={idParam}
+        onClose={closeTheme}
+      />
 
       <Lightbox
         project={gallery}
