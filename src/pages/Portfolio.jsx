@@ -184,7 +184,7 @@ export default function Portfolio() {
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-24 max-w-7xl mx-auto min-h-[80vh]">
         <BlurText
           text="El trabajo habla por sí solo."
-          className="font-heading uppercase text-white text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] max-w-4xl"
+          className="font-heading italic text-white text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] max-w-4xl"
           justify="left"
         />
 
@@ -220,7 +220,7 @@ export default function Portfolio() {
           ) : error ? (
             <div className="liquid-glass rounded-[1.25rem] flex items-center justify-center py-24 text-center">
               <div>
-                <p className="font-heading uppercase text-white/40 text-2xl">No se pudo cargar el portfolio</p>
+                <p className="font-heading italic text-white/40 text-2xl">No se pudo cargar el portfolio</p>
                 <p className="text-sm text-white/30 font-body mt-2">Inténtalo de nuevo en un momento.</p>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Portfolio() {
                   className="liquid-glass rounded-[1.25rem] flex items-center justify-center py-24 text-center"
                 >
                   <div>
-                    <p className="font-heading uppercase text-white/30 text-2xl">Próximamente</p>
+                    <p className="font-heading italic text-white/30 text-2xl">Próximamente</p>
                     <p className="text-sm text-white/20 font-body mt-2">Estamos preparando este contenido.</p>
                   </div>
                 </motion.div>
@@ -259,8 +259,8 @@ export default function Portfolio() {
                             className="flex items-center justify-between gap-4 mb-4 w-full text-left group/theme"
                           >
                             <div className="flex items-center gap-4 min-w-0">
-                              <span className="accent-line" />
-                              <h2 className="font-heading uppercase text-white text-2xl md:text-3xl tracking-[-0.5px] group-hover/theme:text-white/80 transition-colors truncate">
+                              <span className="red-line" />
+                              <h2 className="font-heading italic text-white text-2xl md:text-3xl tracking-[-0.5px] group-hover/theme:text-white/80 transition-colors truncate">
                                 {row.label}
                               </h2>
                             </div>

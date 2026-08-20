@@ -41,9 +41,9 @@ export default function ThemePanel({ row, onOpenGallery, onSelect, highlightId, 
             onClick={(e) => e.stopPropagation()}
           >
             <div className="min-w-0 flex items-center gap-3">
-              <span className="accent-line" />
+              <span className="red-line" />
               <div className="min-w-0">
-                <h2 className="font-heading uppercase text-white text-xl md:text-2xl tracking-[-0.5px] truncate">
+                <h2 className="font-heading italic text-white text-xl md:text-2xl tracking-[-0.5px] truncate">
                   {row.label}
                 </h2>
                 <p className="text-xs text-white/40 font-body mt-0.5">
