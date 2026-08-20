@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
@@ -25,6 +25,42 @@ const SERVICIOS = [
     tags: ['Eventos', 'Festividades', 'Conciertos'],
   },
 ]
+
+// Fonts already loaded on the page (see index.html) — no extra network requests.
+const MARCA_FONTS = [
+  { fontFamily: "'Anton', sans-serif", fontStyle: 'normal', fontWeight: 400 },
+  { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400 },
+  { fontFamily: "'Barlow', sans-serif", fontStyle: 'normal', fontWeight: 700 },
+]
+
+// "Marca" cycles through a few different typefaces on a timer for a dynamic,
+// restless feel. The variants stack in the same grid cell so the change
+// never shifts the surrounding layout.
+function MarcaWord() {
+  const [i, setI] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setI((n) => (n + 1) % MARCA_FONTS.length), 1400)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <span style={{ display: 'inline-grid' }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 10, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, y: -10, filter: 'blur(6px)' }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          style={{ gridArea: '1 / 1', ...MARCA_FONTS[i] }}
+        >
+          Marca
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  )
+}
 
 function Hero() {
   const { heroVideo, heroPoster } = useMarca()
@@ -83,11 +119,25 @@ function Hero() {
             }}
           />
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <BlurText
-              text="Contenido profesional para tu marca"
-              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[9.5rem] font-['Anton'] uppercase text-white leading-[0.9] max-w-[88vw] lg:max-w-[85vw] mx-auto tracking-normal"
-              justify="center"
-            />
+            <SectionReveal delay={0.1}>
+              <h1
+                className="uppercase text-white mx-auto"
+                style={{
+                  fontFamily: "'Anton', sans-serif",
+                  lineHeight: 0.92,
+                  letterSpacing: '-0.01em',
+                  fontSize: 'clamp(2.75rem, 8vw, 9.5rem)',
+                  maxWidth: '94vw',
+                }}
+              >
+                <span style={{ display: 'block' }}>
+                  Contenido <span style={{ color: 'var(--color-red)' }}>profesional</span>
+                </span>
+                <span style={{ display: 'block' }}>
+                  Para tu <MarcaWord />
+                </span>
+              </h1>
+            </SectionReveal>
           </div>
         </div>
 
