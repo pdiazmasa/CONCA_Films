@@ -70,12 +70,6 @@ function Hero() {
       {/* Decorative 3D particle field */}
       <ThreeBackground className="z-[2]" count={1100} />
 
-      {/* Fade to black at the bottom, for a smooth transition into the next section */}
-      <div
-        className="absolute inset-x-0 bottom-0 h-48 md:h-64 z-[3] pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 75%, #000 100%)' }}
-      />
-
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-center">
         <div style={{ position: 'relative' }}>
