@@ -58,7 +58,7 @@ function MarcaWord() {
           style={{
             gridArea: '1 / 1',
             ...f,
-            color: 'var(--color-red)',
+            color: '#fff',
             fontSize: '1.3em',
             visibility: idx === i ? 'visible' : 'hidden',
           }}
