@@ -27,7 +27,7 @@ const SERVICIOS = [
 ]
 
 function Hero() {
-  const { heroVideo, heroPoster, logoPrincipal } = useMarca()
+  const { heroVideo, heroPoster } = useMarca()
   const { scrollY } = useScroll()
   const bgY = useTransform(scrollY, [0, 700], [0, 150])
 
@@ -70,16 +70,14 @@ function Hero() {
       {/* Decorative 3D particle field */}
       <ThreeBackground className="z-[2]" count={1100} />
 
+      {/* Fade to black at the bottom, for a smooth transition into the next section */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-48 md:h-64 z-[3] pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 75%, #000 100%)' }}
+      />
+
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-center">
-        <SectionReveal delay={0.1}>
-          <img
-            src={logoPrincipal}
-            alt="CONCA Films"
-            className="mx-auto mb-6 md:mb-8 h-24 md:h-32 lg:h-36 w-auto object-contain"
-            style={{ maxWidth: '90vw' }}
-          />
-        </SectionReveal>
         <div style={{ position: 'relative' }}>
           <div
             style={{
@@ -93,7 +91,7 @@ function Hero() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <BlurText
               text="Contenido profesional para tu marca"
-              className="text-4xl md:text-5xl lg:text-[4.5rem] font-heading italic text-white leading-[0.9] max-w-4xl mx-auto tracking-[-3px]"
+              className="text-5xl md:text-6xl lg:text-[5.5rem] font-heading italic font-bold text-white leading-[0.95] max-w-5xl mx-auto tracking-[-2px]"
               justify="center"
             />
           </div>
