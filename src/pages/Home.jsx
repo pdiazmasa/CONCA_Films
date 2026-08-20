@@ -28,9 +28,13 @@ const SERVICIOS = [
 
 // Fonts already loaded on the page (see index.html) — no extra network requests.
 const MARCA_FONTS = [
-  { fontFamily: "'Anton', sans-serif", fontStyle: 'normal', fontWeight: 400 },
-  { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400 },
-  { fontFamily: "'Barlow', sans-serif", fontStyle: 'normal', fontWeight: 700 },
+  { fontFamily: "'Anton', sans-serif", fontStyle: 'normal', fontWeight: 400, textTransform: 'uppercase' },
+  { fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400, textTransform: 'none' },
+  { fontFamily: "'Barlow', sans-serif", fontStyle: 'normal', fontWeight: 700, textTransform: 'uppercase' },
+  { fontFamily: "'Bebas Neue', sans-serif", fontStyle: 'normal', fontWeight: 400, textTransform: 'uppercase' },
+  { fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontWeight: 700, textTransform: 'none' },
+  { fontFamily: "'Space Mono', monospace", fontStyle: 'normal', fontWeight: 700, textTransform: 'uppercase' },
+  { fontFamily: "'Caveat', cursive", fontStyle: 'normal', fontWeight: 700, textTransform: 'none' },
 ]
 
 // "Marca" flicks through a few different typefaces on a fast timer for a
