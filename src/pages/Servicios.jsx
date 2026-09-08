@@ -18,6 +18,7 @@ const SERVICES_TEXT = [
     body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con nuestro equipo propio, sin necesitar ayuda externa. El resultado: piezas con objetivo que generan impacto.',
     tags: ['Eventos', 'Spots', 'Edición'],
     imageKey: 'produccionVideo',
+    videoKey: 'produccionVideoMontage',
     cat: 'video',
     linkLabel: 'Ver proyectos de vídeo',
   },
@@ -37,7 +38,18 @@ function ServiceImage({ service }) {
   const [error, setError] = useState(false)
   return (
     <div className="liquid-glass rounded-[1.5rem] overflow-hidden aspect-[4/3] relative">
-      {service.image && !error ? (
+      {service.video && !error ? (
+        <video
+          src={service.video}
+          poster={service.image || undefined}
+          onError={() => setError(true)}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : service.image && !error ? (
         <img
           src={service.image}
           alt={service.kicker}
@@ -59,6 +71,7 @@ export default function Servicios() {
   const SERVICES = SERVICES_TEXT.map((s) => ({
     ...s,
     image: servicios[s.imageKey] ? `/uploads/servicios/${servicios[s.imageKey]}` : null,
+    video: s.videoKey && servicios[s.videoKey] ? `/uploads/servicios/${servicios[s.videoKey]}` : null,
   }))
   useSeo({
     title: 'Servicios — Eventos, vídeo y fotografía | CONCA Films',
