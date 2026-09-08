@@ -23,8 +23,8 @@ const DEFAULT = 'video'
 // el JSON, el propio texto del tema ya te dice a qué fila va a caer en la
 // web. Un "tema" que no esté en esta lista cae en "Otros".
 const THEMES_BY_FORMAT = {
-  video: ['Spots publicitarios', 'Festivales', 'Creadores de contenido', 'Eventos', 'Deportes', 'Otros'],
-  foto: ['Festivales y discotecas', 'Deportes', 'Eventos', 'Fiestas populares', 'Gastronomía', 'Otros'],
+  video: ['Eventos', 'Spots publicitarios', 'Clubes', 'Otros'],
+  foto: ['Eventos', 'Deportes', 'Tradición', 'Otros'],
 }
 
 // Cada formato vive en su propio JSON, dentro de la misma carpeta que sus
@@ -259,7 +259,6 @@ export default function Portfolio() {
                             className="flex items-center justify-between gap-4 mb-4 w-full text-left group/theme"
                           >
                             <div className="flex items-center gap-4 min-w-0">
-                              <span className="red-line" />
                               <h2 className="font-heading italic text-white text-2xl md:text-3xl tracking-[-0.5px] group-hover/theme:text-white/80 transition-colors truncate">
                                 {row.label}
                               </h2>

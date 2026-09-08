@@ -63,7 +63,7 @@ function MarcaWord() {
             visibility: idx === i ? 'visible' : 'hidden',
           }}
         >
-          Marca
+          Evento
         </span>
       ))}
     </span>
@@ -154,8 +154,8 @@ function Hero() {
             className="mt-6 text-sm md:text-base text-white/90 max-w-xl mx-auto font-body font-light leading-snug"
             style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
           >
-            Producción audiovisual profesional para marcas, artistas, eventos y fiestas culturales.
-            Equipo propio. Entrega a tiempo. En cualquier parte de España.
+            <span style={{ display: 'block' }}>Producción audiovisual profesional para eventos, artistas y marcas.</span>
+            <span style={{ display: 'block' }}>Equipo propio. Entrega a tiempo. En cualquier parte de España.</span>
           </p>
         </SectionReveal>
 
@@ -197,8 +197,7 @@ function NosotrosResumen() {
     <section className="bg-black relative z-[2] px-8 md:px-16 lg:px-20 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto">
         <SectionReveal>
-          <div className="flex items-center gap-4 mb-8">
-            <span className="red-line" />
+          <div className="mb-8">
             <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Quiénes somos</p>
           </div>
           <BlurText
@@ -215,7 +214,7 @@ function NosotrosResumen() {
         <SectionReveal delay={0.35}>
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-2xl">
             Somos Pedro, Pablo y Juan. Un equipo de tres con equipo propio y plazos de entrega
-            marcados. Trabajamos con marcas, artistas, eventos y fiestas culturales en toda España, sin
+            marcados. Trabajamos con eventos, artistas y marcas en toda España, sin
             intermediarios.
           </p>
         </SectionReveal>
@@ -240,8 +239,7 @@ function ServiciosResumen() {
     <section className="bg-black relative z-[2] px-8 md:px-16 lg:px-20 pb-24 lg:pb-32">
       <div className="max-w-7xl mx-auto">
         <SectionReveal>
-          <div className="flex items-center gap-4 mb-10">
-            <span className="red-line" />
+          <div className="mb-10">
             <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Qué hacemos</p>
           </div>
         </SectionReveal>
@@ -299,8 +297,7 @@ function Clientes() {
   return (
     <section className="bg-[#0A0A0A] border-y border-white/[0.06] py-16 relative z-[2] overflow-hidden">
       <div className="px-8 md:px-16 lg:px-20 mb-10">
-        <div className="flex items-center gap-4 max-w-7xl mx-auto">
-          <span className="red-line" />
+        <div className="max-w-7xl mx-auto">
           <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">
             Ya han confiado en nosotros
           </p>

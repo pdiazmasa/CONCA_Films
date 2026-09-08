@@ -10,17 +10,16 @@ import useSeo from '../hooks/useSeo'
 export default function Clientes() {
   const { clients } = useClients()
   useSeo({
-    title: 'Clientes — Marcas, eventos y festivales | CONCA Films Cuenca',
+    title: 'Clientes — Eventos, artistas y marcas | CONCA Films Cuenca',
     description:
-      'Marcas, artistas, eventos y fiestas culturales que han confiado en CONCA Films para su producción audiovisual y fotografía en Cuenca y toda España.',
+      'Eventos, artistas y marcas que han confiado en CONCA Films para su producción audiovisual y fotografía en Cuenca y toda España.',
     path: '/clientes',
   })
   return (
     <Page>
       {/* Intro */}
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-12 max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 mb-8">
-          <span className="red-line" />
+        <div className="mb-8">
           <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Confían en nosotros</p>
         </div>
         <BlurText
@@ -30,7 +29,7 @@ export default function Clientes() {
         />
         <SectionReveal delay={0.25}>
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-2xl">
-            Marcas, artistas, eventos y fiestas culturales que han puesto su imagen en nuestras manos.
+            Eventos, artistas y marcas que han puesto su imagen en nuestras manos.
             Trabajo directo, sin intermediarios, en cualquier parte de España.
           </p>
         </SectionReveal>

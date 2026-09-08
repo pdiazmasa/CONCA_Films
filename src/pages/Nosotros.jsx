@@ -89,7 +89,7 @@ export default function Nosotros() {
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-3xl">
             CONCA Films nació con el objetivo de hacer producción audiovisual profesional sin los
             problemas de una gran productora. Trato cercano y trabajo personalizado. Operamos en toda
-            España para marcas, artistas, eventos y fiestas culturales.
+            España para eventos, artistas y marcas.
           </p>
         </SectionReveal>
 
@@ -142,8 +142,7 @@ export default function Nosotros() {
       {/* Equipo técnico */}
       <section className="px-8 md:px-16 lg:px-20 py-24 lg:py-28 max-w-7xl mx-auto">
         <SectionReveal>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="red-line" />
+          <div className="mb-6">
             <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Equipo técnico propio</p>
           </div>
           <h2 className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-2px] max-w-2xl">

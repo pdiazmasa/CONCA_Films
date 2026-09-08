@@ -41,7 +41,6 @@ export default function ThemePanel({ row, onOpenGallery, onSelect, highlightId, 
             onClick={(e) => e.stopPropagation()}
           >
             <div className="min-w-0 flex items-center gap-3">
-              <span className="red-line" />
               <div className="min-w-0">
                 <h2 className="font-heading italic text-white text-xl md:text-2xl tracking-[-0.5px] truncate">
                   {row.label}

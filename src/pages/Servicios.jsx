@@ -25,7 +25,7 @@ const SERVICES_TEXT = [
     n: '02',
     kicker: 'Reportaje fotográfico',
     title: 'Imágenes de calidad.',
-    body: 'Cobertura fotográfica profesional de eventos, fiestas culturales y conciertos. Con nuestro material ofrecemos imágenes de calidad profesional que editamos nosotros mismos. Te entregamos una selección cuidada, editada y lista para publicar.',
+    body: 'Cobertura fotográfica profesional de eventos y conciertos. Con nuestro material ofrecemos imágenes de calidad profesional que editamos nosotros mismos. Te entregamos una selección cuidada, editada y lista para publicar.',
     tags: ['Eventos', 'Festividades', 'Conciertos'],
     imageKey: 'reportajeFotografico',
     cat: 'foto',
@@ -70,8 +70,7 @@ export default function Servicios() {
     <Page>
       {/* Intro */}
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-12 max-w-7xl mx-auto">
-        <div className="flex items-center gap-4 mb-8">
-          <span className="red-line" />
+        <div className="mb-8">
           <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Qué ofrecemos</p>
         </div>
         <BlurText

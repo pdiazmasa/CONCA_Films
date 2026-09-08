@@ -24,12 +24,6 @@ export default function Contacto() {
         <ThreeBackground className="opacity-90" count={900} />
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
-          <SectionReveal>
-            <span
-              style={{ display: 'block', width: '3rem', height: '1px', background: 'var(--color-red)', margin: '0 auto 2.5rem' }}
-            />
-          </SectionReveal>
-
           <BlurText
             text="Tu próxima pieza empieza aquí."
             className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl tracking-[-2px]"
@@ -48,6 +42,15 @@ export default function Contacto() {
               className="mt-12 inline-block font-heading italic text-white text-3xl md:text-5xl lg:text-6xl tracking-[-2px] hover:text-white/60 transition-colors break-words"
             >
               concafilms@gmail.com
+            </a>
+          </SectionReveal>
+
+          <SectionReveal delay={0.7}>
+            <a
+              href="tel:+34608407913"
+              className="mt-5 inline-block font-body text-white/60 text-lg md:text-xl hover:text-white transition-colors"
+            >
+              +34 608 40 79 13
             </a>
           </SectionReveal>
 

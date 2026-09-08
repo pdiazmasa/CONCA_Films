@@ -103,15 +103,6 @@ body {
   overflow: hidden;
 }
 
-/* ─── DECORATIVE RED LINE ────────────────────────────── */
-.red-line {
-  display: block;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--color-red);
-  flex-shrink: 0;
-}
-
 /* ─── PORTFOLIO TABS / FILTER PILLS ──────────────────── */
 .tab-btn {
   transition: all 0.2s ease;
