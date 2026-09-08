@@ -8,6 +8,7 @@ const LINKS = [
   { label: 'Servicios', to: '/servicios' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Clientes', to: '/clientes' },
+  { label: 'Valencia', to: '/valencia' },
   { label: 'Contacto', to: '/contacto' },
 ]
 

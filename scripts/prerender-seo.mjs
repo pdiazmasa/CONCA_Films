@@ -46,6 +46,12 @@ const ROUTES = [
       'Eventos, artistas y marcas que han confiado en CONCA Films para su producción audiovisual y fotografía en Cuenca y toda España.',
   },
   {
+    path: '/valencia',
+    title: 'Producción audiovisual de eventos en Valencia | CONCA Films',
+    description:
+      'Cobertura de eventos en Valencia: bodas, eventos corporativos, galerías, agencias y centros académicos. Vídeo y fotografía profesional, equipo propio.',
+  },
+  {
     path: '/contacto',
     title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
     description:

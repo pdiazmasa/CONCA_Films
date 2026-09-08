@@ -7,6 +7,7 @@ const LINKS = [
   { label: 'Servicios', to: '/servicios' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Clientes', to: '/clientes' },
+  { label: 'Valencia', to: '/valencia' },
   { label: 'Contacto', to: '/contacto' },
 ]
 
@@ -62,7 +63,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-xs text-white/20 font-body">CONCA Films © 2026</p>
+          <p className="text-xs text-white/20 font-body">CONCA Films © 2026 — Cuenca · Valencia</p>
         </div>
       </div>
     </footer>

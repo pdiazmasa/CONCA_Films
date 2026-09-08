@@ -9,6 +9,7 @@ import Nosotros from './pages/Nosotros'
 import Servicios from './pages/Servicios'
 import Portfolio from './pages/Portfolio'
 import Clientes from './pages/Clientes'
+import Valencia from './pages/Valencia'
 import Contacto from './pages/Contacto'
 
 function AnimatedRoutes() {
@@ -21,6 +22,7 @@ function AnimatedRoutes() {
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/clientes" element={<Clientes />} />
+        <Route path="/valencia" element={<Valencia />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="*" element={<Home />} />
       </Routes>
