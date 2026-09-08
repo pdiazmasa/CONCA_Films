@@ -7,6 +7,7 @@ import SectionReveal from '../components/SectionReveal'
 import ThreeBackground from '../components/LazyThree'
 import ClientLogo from '../components/ClientLogo'
 import useClients from '../hooks/useClients'
+import useJson from '../hooks/useJson'
 import useMarca from '../hooks/useMarca'
 import { ArrowUpRight, ArrowRight, VideoIcon, CameraIcon } from '../components/icons'
 import useSeo from '../hooks/useSeo'
@@ -16,13 +17,17 @@ const SERVICIOS = [
     icon: <VideoIcon />,
     title: 'Producción de vídeo',
     body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Rodaje y postproducción propios.',
-    tags: ['Spots', 'Eventos', 'Edición'],
+    tags: ['Eventos', 'Spots', 'Edición'],
+    cat: 'video',
+    jsonPath: 'uploads/videos/portfolio-video.json',
   },
   {
     icon: <CameraIcon />,
-    title: 'Reportaje fotográfico',
+    title: 'Fotografía',
     body: 'Cobertura fotográfica profesional para eventos, fiestas y conciertos.',
     tags: ['Eventos', 'Festividades', 'Conciertos'],
+    cat: 'foto',
+    jsonPath: 'uploads/fotos/portfolio-foto.json',
   },
 ]
 
@@ -234,6 +239,36 @@ function NosotrosResumen() {
   )
 }
 
+// Tira de 3 miniaturas con los trabajos más recientes de ese formato (vídeo o
+// foto), a modo de avance del portfolio dentro de cada tarjeta de "Qué
+// hacemos". Enlaza a la pestaña correspondiente de /portfolio.
+function PortfolioPreview({ path, cat }) {
+  const { data } = useJson(path, [])
+  const items = [...data].sort((a, b) => (b.id ?? 0) - (a.id ?? 0)).slice(0, 3)
+  if (items.length === 0) return null
+  return (
+    <Link to={`/portfolio?cat=${cat}`} className="mt-5 grid grid-cols-3 gap-1.5 group/preview">
+      {items.map((p) => {
+        const cover = p.imagen || (Array.isArray(p.imagenes) ? p.imagenes[0] : null)
+        return (
+          <div key={p.id ?? p.titulo} className="aspect-square rounded-lg overflow-hidden liquid-glass">
+            {cover ? (
+              <img
+                src={cover}
+                alt={p.titulo}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover/preview:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#111]" />
+            )}
+          </div>
+        )
+      })}
+    </Link>
+  )
+}
+
 function ServiciosResumen() {
   return (
     <section className="bg-black relative z-[2] px-8 md:px-16 lg:px-20 pb-24 lg:pb-32">
@@ -266,6 +301,7 @@ function ServiciosResumen() {
                     </span>
                   ))}
                 </div>
+                <PortfolioPreview path={card.jsonPath} cat={card.cat} />
               </div>
             </SectionReveal>
           ))}
@@ -333,9 +369,6 @@ function CTAFinal() {
   return (
     <section className="bg-black relative z-[2] min-h-[55vh] flex items-center justify-center px-8 py-24">
       <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-        <SectionReveal>
-          <span style={{ display: 'block', width: '3rem', height: '1px', background: 'var(--color-red)', margin: '0 auto 2.5rem' }} />
-        </SectionReveal>
         <BlurText
           text="Tu próxima pieza empieza aquí."
           className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl tracking-[-2px]"
@@ -364,7 +397,7 @@ export default function Home() {
   useSeo({
     title: 'CONCA Films | Productora audiovisual y fotografía en Cuenca',
     description:
-      'Productora audiovisual en Cuenca. Vídeo profesional, fotografía, spots publicitarios y cobertura de eventos y festivales en toda España. Calidad profesional, equipo propio y plazos marcados.',
+      'Productora audiovisual en Cuenca. Cobertura de eventos y festivales, vídeo profesional, fotografía y spots publicitarios en toda España. Calidad profesional, equipo propio y plazos marcados.',
     path: '/',
   })
   return (

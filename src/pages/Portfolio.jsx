@@ -58,7 +58,7 @@ export default function Portfolio() {
   useSeo({
     title: 'Portfolio — Vídeo y fotografía de eventos y festivales | CONCA Films',
     description:
-      'Trabajos de CONCA Films: spots, vídeos de evento, cobertura de festivales y reportaje fotográfico en Cuenca y toda España. Mira nuestro portfolio audiovisual.',
+      'Trabajos de CONCA Films: cobertura de eventos y festivales, vídeos, spots y fotografía en Cuenca y toda España. Mira nuestro portfolio audiovisual.',
     path: '/portfolio',
   })
   const [searchParams, setSearchParams] = useSearchParams()

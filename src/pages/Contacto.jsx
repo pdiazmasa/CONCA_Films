@@ -15,7 +15,7 @@ export default function Contacto() {
   useSeo({
     title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
     description:
-      'Cuéntanos tu proyecto de vídeo o fotografía. Productora audiovisual en Cuenca disponible para spots, eventos y festivales en toda España. Escríbenos a concafilms@gmail.com.',
+      'Cuéntanos tu proyecto de eventos, vídeo o fotografía. Productora audiovisual en Cuenca disponible para eventos, spots y festivales en toda España. Escríbenos a concafilms@gmail.com.',
     path: '/contacto',
   })
   return (
@@ -38,19 +38,19 @@ export default function Contacto() {
 
           <SectionReveal delay={0.6}>
             <a
-              href="mailto:concafilms@gmail.com"
+              href="tel:+34608407913"
               className="mt-12 inline-block font-heading italic text-white text-3xl md:text-5xl lg:text-6xl tracking-[-2px] hover:text-white/60 transition-colors break-words"
             >
-              concafilms@gmail.com
+              +34 608 40 79 13
             </a>
           </SectionReveal>
 
           <SectionReveal delay={0.7}>
             <a
-              href="tel:+34608407913"
+              href="mailto:concafilms@gmail.com"
               className="mt-5 inline-block font-body text-white/60 text-lg md:text-xl hover:text-white transition-colors"
             >
-              +34 608 40 79 13
+              concafilms@gmail.com
             </a>
           </SectionReveal>
 

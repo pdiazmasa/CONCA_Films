@@ -30,7 +30,6 @@ export default function Clientes() {
         <SectionReveal delay={0.25}>
           <p className="mt-8 text-base md:text-lg text-white/60 font-body font-light leading-relaxed max-w-2xl">
             Eventos, artistas y marcas que han puesto su imagen en nuestras manos.
-            Trabajo directo, sin intermediarios, en cualquier parte de España.
           </p>
         </SectionReveal>
       </section>

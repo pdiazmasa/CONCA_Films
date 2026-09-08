@@ -16,14 +16,14 @@ const SERVICES_TEXT = [
     kicker: 'Producción de vídeo',
     title: 'Vídeos con un objetivo.',
     body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con nuestro equipo propio, sin necesitar ayuda externa. El resultado: piezas con objetivo que generan impacto.',
-    tags: ['Spots', 'Eventos', 'Edición'],
+    tags: ['Eventos', 'Spots', 'Edición'],
     imageKey: 'produccionVideo',
     cat: 'video',
     linkLabel: 'Ver proyectos de vídeo',
   },
   {
     n: '02',
-    kicker: 'Reportaje fotográfico',
+    kicker: 'Fotografía',
     title: 'Imágenes de calidad.',
     body: 'Cobertura fotográfica profesional de eventos y conciertos. Con nuestro material ofrecemos imágenes de calidad profesional que editamos nosotros mismos. Te entregamos una selección cuidada, editada y lista para publicar.',
     tags: ['Eventos', 'Festividades', 'Conciertos'],
@@ -61,9 +61,9 @@ export default function Servicios() {
     image: servicios[s.imageKey] ? `/uploads/servicios/${servicios[s.imageKey]}` : null,
   }))
   useSeo({
-    title: 'Servicios — Vídeo, fotografía y spots publicitarios | CONCA Films',
+    title: 'Servicios — Eventos, vídeo y fotografía | CONCA Films',
     description:
-      'Producción de vídeo, spots publicitarios, reportaje fotográfico y cobertura de eventos y festivales en Cuenca y toda España. Rodaje y postproducción con equipo propio.',
+      'Cobertura de eventos y festivales, producción de vídeo, spots publicitarios y fotografía en Cuenca y toda España. Rodaje y postproducción con equipo propio.',
     path: '/servicios',
   })
   return (
