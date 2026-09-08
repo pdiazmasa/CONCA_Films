@@ -143,7 +143,7 @@ export default function Nosotros() {
       <section className="px-8 md:px-16 lg:px-20 py-24 lg:py-28 max-w-7xl mx-auto">
         <SectionReveal>
           <div className="mb-6">
-            <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Equipo técnico propio</p>
+            <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">Equipo técnico propio</p>
           </div>
           <h2 className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-2px] max-w-2xl">
             Equipo propio. Sin depender de nadie.

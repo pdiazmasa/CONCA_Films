@@ -25,7 +25,7 @@ export default function Contacto() {
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
           <BlurText
-            text="Tu próxima pieza empieza aquí."
+            text="Hablemos de tu evento."
             className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl tracking-[-2px]"
             justify="center"
           />

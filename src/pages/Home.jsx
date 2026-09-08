@@ -203,7 +203,7 @@ function NosotrosResumen() {
       <div className="max-w-3xl mx-auto">
         <SectionReveal>
           <div className="mb-8">
-            <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Quiénes somos</p>
+            <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">Quiénes somos</p>
           </div>
           <BlurText
             text="¿Nuestro lema? No hacemos trabajo mediocre"
@@ -275,7 +275,7 @@ function ServiciosResumen() {
       <div className="max-w-7xl mx-auto">
         <SectionReveal>
           <div className="mb-10">
-            <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Qué hacemos</p>
+            <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">Qué hacemos</p>
           </div>
         </SectionReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -334,7 +334,7 @@ function Clientes() {
     <section className="bg-[#0A0A0A] border-y border-white/[0.06] py-16 relative z-[2] overflow-hidden">
       <div className="px-8 md:px-16 lg:px-20 mb-10">
         <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">
+          <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">
             Ya han confiado en nosotros
           </p>
         </div>
@@ -370,7 +370,7 @@ function CTAFinal() {
     <section className="bg-black relative z-[2] min-h-[55vh] flex items-center justify-center px-8 py-24">
       <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
         <BlurText
-          text="Tu próxima pieza empieza aquí."
+          text="Hablemos de tu evento."
           className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl tracking-[-2px]"
           justify="center"
         />

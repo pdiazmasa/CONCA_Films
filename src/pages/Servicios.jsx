@@ -14,7 +14,7 @@ const SERVICES_TEXT = [
   {
     n: '01',
     kicker: 'Producción de vídeo',
-    title: 'Vídeos con un objetivo.',
+    title: 'Vídeo para tu evento.',
     body: 'Spots, vídeos de evento, cobertura audiovisual y contenido para redes. Nos encargamos del concepto, el rodaje y la postproducción con nuestro equipo propio, sin necesitar ayuda externa. El resultado: piezas con objetivo que generan impacto.',
     tags: ['Eventos', 'Spots', 'Edición'],
     imageKey: 'produccionVideo',
@@ -71,7 +71,7 @@ export default function Servicios() {
       {/* Intro */}
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-12 max-w-7xl mx-auto">
         <div className="mb-8">
-          <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Qué ofrecemos</p>
+          <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">Qué ofrecemos</p>
         </div>
         <BlurText
           text="No hacemos trabajo mediocre"
@@ -91,7 +91,7 @@ export default function Servicios() {
                   <ServiceImage service={service} />
                 </div>
                 <div className={reverse ? 'lg:order-1' : ''}>
-                  <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase mb-4">
+                  <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase mb-4">
                     {service.kicker}
                   </p>
                   <h2 className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-2px]">

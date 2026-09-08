@@ -20,7 +20,7 @@ export default function Clientes() {
       {/* Intro */}
       <section className="px-8 md:px-16 lg:px-20 pt-36 lg:pt-44 pb-12 max-w-7xl mx-auto">
         <div className="mb-8">
-          <p className="text-xs font-body text-white/40 tracking-[0.2em] uppercase">Confían en nosotros</p>
+          <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">Confían en nosotros</p>
         </div>
         <BlurText
           text="Ya han confiado en nosotros."
