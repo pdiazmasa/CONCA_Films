@@ -139,6 +139,35 @@ export default function Nosotros() {
         </div>
       </section>
 
+      {/* En acción */}
+      <section className="px-8 md:px-16 lg:px-20 py-24 lg:py-28 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <SectionReveal>
+            <div className="mb-6">
+              <p className="text-[11px] font-body font-semibold text-white/50 tracking-[0.35em] uppercase">
+                En acción
+              </p>
+            </div>
+            <h2 className="font-heading italic text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-2px] max-w-xl">
+              Donde está el evento, estamos nosotros.
+            </h2>
+            <p className="mt-6 text-base text-white/50 font-body font-light leading-relaxed max-w-[48ch]">
+              Cobertura en directo, sin perder ni un momento.
+            </p>
+          </SectionReveal>
+          <SectionReveal delay={0.2}>
+            <div className="liquid-glass rounded-[1.5rem] overflow-hidden aspect-[3/4] max-w-md mx-auto lg:mx-0">
+              <img
+                src="/uploads/marca/imagen_pedro.jpeg"
+                alt="Equipo de CONCA Films cubriendo un evento en directo"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
       {/* Equipo técnico */}
       <section className="px-8 md:px-16 lg:px-20 py-24 lg:py-28 max-w-7xl mx-auto">
         <SectionReveal>
