@@ -1,4 +1,4 @@
-import{r as Ws,j as bo}from"./index-w9Y_UoQj.js";/**
+import{r as Ws,j as bo}from"./index-D2woR3Wd.js";/**
  * @license
  * Copyright 2010-2024 Three.js Authors
  * SPDX-License-Identifier: MIT
