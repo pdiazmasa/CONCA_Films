@@ -11,6 +11,7 @@ import useJson from '../hooks/useJson'
 import useMarca from '../hooks/useMarca'
 import { ArrowUpRight, ArrowRight, VideoIcon, CameraIcon } from '../components/icons'
 import useSeo from '../hooks/useSeo'
+import { projectAlt } from '../utils/seoAlt'
 
 const SERVICIOS = [
   {
@@ -255,7 +256,7 @@ function PortfolioPreview({ path, cat }) {
             {cover ? (
               <img
                 src={cover}
-                alt={p.titulo}
+                alt={projectAlt(p)}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover/preview:scale-105"
               />

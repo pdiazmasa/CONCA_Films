@@ -14,6 +14,8 @@ import path from 'path'
 const ORIGIN = 'https://concafilms.com'
 const DIST = path.resolve('dist')
 
+// `breadcrumbLabel`: texto corto para el BreadcrumbList (JSON-LD) de esa
+// ruta — se omite en "/" porque la propia home no necesita migas de pan.
 const ROUTES = [
   {
     path: '/',
@@ -26,41 +28,62 @@ const ROUTES = [
     title: 'Servicios — Eventos, vídeo y fotografía | CONCA Films',
     description:
       'Cobertura de eventos y festivales, producción de vídeo, spots publicitarios y fotografía en Cuenca y toda España. Rodaje y postproducción con equipo propio.',
+    breadcrumbLabel: 'Servicios',
   },
   {
     path: '/portfolio',
     title: 'Portfolio — Vídeo y fotografía de eventos y festivales | CONCA Films',
     description:
       'Trabajos de CONCA Films: cobertura de eventos y festivales, vídeos, spots y fotografía en Cuenca y toda España. Mira nuestro portfolio audiovisual.',
+    breadcrumbLabel: 'Portfolio',
   },
   {
     path: '/nosotros',
     title: 'Nosotros — Equipo de producción audiovisual en Cuenca | CONCA Films',
     description:
       'Somos Pedro, Pablo y Juan: equipo de producción audiovisual y fotografía en Cuenca con equipo propio. Cámaras Canon, Lumix y Sony, dron y estabilizadores para vídeo y eventos.',
+    breadcrumbLabel: 'Nosotros',
   },
   {
     path: '/clientes',
     title: 'Clientes — Eventos, artistas y marcas | CONCA Films Cuenca',
     description:
       'Eventos, artistas y marcas que han confiado en CONCA Films para su producción audiovisual y fotografía en Cuenca y toda España.',
+    breadcrumbLabel: 'Clientes',
   },
   {
     path: '/valencia',
     title: 'Producción audiovisual de eventos en Valencia | CONCA Films',
     description:
       'Cobertura de eventos en Valencia: bodas, eventos corporativos, galerías, agencias y centros académicos. Vídeo y fotografía profesional, equipo propio.',
+    breadcrumbLabel: 'Valencia',
   },
   {
     path: '/contacto',
     title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
     description:
       'Cuéntanos tu proyecto de eventos, vídeo o fotografía. Productora audiovisual en Cuenca disponible para eventos, spots y festivales en toda España. Escríbenos a concafilms@gmail.com.',
+    breadcrumbLabel: 'Contacto',
   },
 ]
 
 function escapeAttr(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+// BreadcrumbList (JSON-LD): "Inicio > <breadcrumbLabel>". Habilita las migas
+// de pan en los resultados de búsqueda de Google para cada ruta interior.
+function buildBreadcrumbScript(route) {
+  if (!route.breadcrumbLabel) return ''
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: ORIGIN + '/' },
+      { '@type': 'ListItem', position: 2, name: route.breadcrumbLabel, item: ORIGIN + route.path },
+    ],
+  }
+  return `    <script type="application/ld+json">${JSON.stringify(data)}</script>\n  `
 }
 
 function applyRoute(html, route) {
@@ -81,6 +104,12 @@ function applyRoute(html, route) {
   } else {
     html = html.replace('</head>', `    <link rel="canonical" href="${url}" />\n  </head>`)
   }
+
+  const breadcrumb = buildBreadcrumbScript(route)
+  if (breadcrumb) {
+    html = html.replace('</head>', `${breadcrumb}</head>`)
+  }
+
   return html
 }
 

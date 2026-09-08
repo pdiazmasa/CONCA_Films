@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ExternalIcon, GalleryIcon } from './icons'
+import { projectAlt } from '../utils/seoAlt'
 
 // Portfolio thumbnail with three modes:
 //  - `imagenes` (array)  → opens an in-page photo carousel (onOpenGallery)
@@ -29,7 +30,7 @@ export default function ProjectCard({ project, onOpenGallery, onSelect, highligh
       {hasImg ? (
         <img
           src={cover}
-          alt={titulo}
+          alt={projectAlt(project)}
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           onError={() => setImgError(true)}

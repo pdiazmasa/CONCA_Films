@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, CloseIcon } from './icons'
+import { projectAlt } from '../utils/seoAlt'
 
 // Fullscreen photo carousel for "foto" projects.
 // `project` (nullable) holds { titulo, imagenes: [...] }. `onClose` dismisses it.
@@ -52,7 +53,7 @@ export default function Lightbox({ project, onClose }) {
           {/* Header */}
           <div className="flex items-center justify-between px-6 md:px-10 py-5 flex-shrink-0">
             <div className="min-w-0">
-              <p className="font-heading italic text-white text-xl md:text-2xl truncate">{project.titulo}</p>
+              <p className="font-heading uppercase text-white text-base md:text-lg tracking-normal truncate">{project.titulo}</p>
               {multiple && (
                 <p className="text-xs text-white/40 font-body mt-0.5">
                   {index + 1} / {images.length}
@@ -87,7 +88,7 @@ export default function Lightbox({ project, onClose }) {
               <motion.img
                 key={index}
                 src={images[index]}
-                alt={`${project.titulo} — ${index + 1}`}
+                alt={projectAlt(project, `foto ${index + 1} de ${images.length}`)}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}

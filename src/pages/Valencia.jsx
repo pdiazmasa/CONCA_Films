@@ -5,6 +5,7 @@ import SectionReveal from '../components/SectionReveal'
 import { ArrowRight } from '../components/icons'
 import useJson from '../hooks/useJson'
 import useSeo from '../hooks/useSeo'
+import { projectAlt } from '../utils/seoAlt'
 
 // A quién ayudamos en Valencia — mismos segmentos del giro estratégico a
 // eventos (ver notas internas), en el mismo orden.
@@ -117,7 +118,12 @@ export default function Valencia() {
             {trabajos.map((t) => (
               <div key={t.id ?? t.titulo} className="aspect-video rounded-[1.25rem] overflow-hidden liquid-glass">
                 {t.imagen ? (
-                  <img src={t.imagen} alt={t.titulo} loading="lazy" className="w-full h-full object-cover" />
+                  <img
+                    src={t.imagen}
+                    alt={projectAlt({ ciudad: 'Valencia', ...t })}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
                 ) : null}
               </div>
             ))}
