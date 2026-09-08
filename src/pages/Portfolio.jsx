@@ -23,8 +23,8 @@ const DEFAULT = 'video'
 // el JSON, el propio texto del tema ya te dice a qué fila va a caer en la
 // web. Un "tema" que no esté en esta lista cae en "Otros".
 const THEMES_BY_FORMAT = {
-  video: ['Eventos', 'Spots publicitarios', 'Clubes', 'Otros'],
-  foto: ['Eventos', 'Deportes', 'Tradición', 'Otros'],
+  video: ['Eventos', 'Spots publicitarios', 'Clubes'],
+  foto: ['Eventos', 'Deportes', 'Tradición'],
 }
 
 // Cada formato vive en su propio JSON, dentro de la misma carpeta que sus
