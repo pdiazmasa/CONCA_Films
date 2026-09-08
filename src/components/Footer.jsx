@@ -7,7 +7,7 @@ const LINKS = [
   { label: 'Servicios', to: '/servicios' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Clientes', to: '/clientes' },
-  { label: 'Valencia', to: '/valencia' },
+  // Valencia: sin enlace aquí hasta que haya contenido real (ver Navbar.jsx).
   { label: 'Contacto', to: '/contacto' },
 ]
 

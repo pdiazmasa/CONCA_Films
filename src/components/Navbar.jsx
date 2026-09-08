@@ -8,7 +8,10 @@ const LINKS = [
   { label: 'Servicios', to: '/servicios' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Clientes', to: '/clientes' },
-  { label: 'Valencia', to: '/valencia' },
+  // Valencia: página lista (SEO, sitemap, schema.org) pero sin enlace en el
+  // menú hasta que haya fotos/vídeos reales de Valencia — de lo contrario
+  // un visitante llega a una página vacía. Reactivar cuando llegue el
+  // portfolio real (ver claude/plan-seo-valencia.md).
   { label: 'Contacto', to: '/contacto' },
 ]
 
