@@ -64,6 +64,39 @@ const ROUTES = [
     description:
       'Cuéntanos tu proyecto de eventos, vídeo o fotografía. Productora audiovisual en Cuenca disponible para eventos, spots y festivales en toda España. Escríbenos a concafilms@gmail.com.',
     breadcrumbLabel: 'Contacto',
+    // Debe coincidir EXACTAMENTE con FAQS en src/pages/Contacto.jsx — es
+    // el mismo texto que ve la persona, solo que aquí también en JSON-LD
+    // para que los buscadores y asistentes de IA lo lean sin ejecutar JS.
+    faq: [
+      {
+        q: '¿En qué zonas trabajáis?',
+        a: 'Tenemos sede en Cuenca y cubrimos eventos en toda España, desplazándonos allí donde nos necesitéis.',
+      },
+      {
+        q: '¿Qué tipo de eventos cubrís?',
+        a: 'Bodas, eventos corporativos, festivales, conciertos, graduaciones, inauguraciones y presentaciones, entre otros — cualquier evento que quieras que quede bien documentado.',
+      },
+      {
+        q: '¿Qué servicios ofrecéis?',
+        a: 'Cobertura de eventos, producción de vídeo, fotografía profesional y spots publicitarios, con edición propia incluida en todos los casos.',
+      },
+      {
+        q: '¿Trabajáis con equipo propio?',
+        a: 'Sí, siempre con equipo propio (cámaras Canon, Lumix y Sony, dron y estabilizadores) y sin intermediarios, de principio a fin.',
+      },
+      {
+        q: '¿Cómo pido presupuesto?',
+        a: 'Escríbenos a concafilms@gmail.com o por WhatsApp contándonos el evento (fecha, lugar y qué necesitas cubrir) y te respondemos con un presupuesto ajustado.',
+      },
+      {
+        q: '¿Cuándo recibo el material?',
+        a: 'Trabajamos con plazos de entrega marcados, que acordamos con cada cliente según el volumen del proyecto.',
+      },
+      {
+        q: '¿Puedo ver trabajos anteriores?',
+        a: 'Sí, en nuestro portfolio tenéis vídeos y fotografías de eventos, deportes, tradición y clubes que hemos cubierto.',
+      },
+    ],
   },
 ]
 
@@ -82,6 +115,23 @@ function buildBreadcrumbScript(route) {
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: ORIGIN + '/' },
       { '@type': 'ListItem', position: 2, name: route.breadcrumbLabel, item: ORIGIN + route.path },
     ],
+  }
+  return `    <script type="application/ld+json">${JSON.stringify(data)}</script>\n  `
+}
+
+// FAQPage (JSON-LD): mismas preguntas/respuestas que se ven en la página.
+// Formato pregunta-respuesta corta — el que más citan buscadores y
+// asistentes de IA cuando responden a preguntas sobre el negocio.
+function buildFaqScript(route) {
+  if (!route.faq || route.faq.length === 0) return ''
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: route.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
   }
   return `    <script type="application/ld+json">${JSON.stringify(data)}</script>\n  `
 }
@@ -108,6 +158,11 @@ function applyRoute(html, route) {
   const breadcrumb = buildBreadcrumbScript(route)
   if (breadcrumb) {
     html = html.replace('</head>', `${breadcrumb}</head>`)
+  }
+
+  const faq = buildFaqScript(route)
+  if (faq) {
+    html = html.replace('</head>', `${faq}</head>`)
   }
 
   return html
