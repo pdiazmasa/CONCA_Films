@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Page from '../components/Page'
 import BlurText from '../components/BlurText'
 import SectionReveal from '../components/SectionReveal'
@@ -43,9 +45,54 @@ export const FAQS = [
     q: '¿Puedo ver trabajos anteriores?',
     a: 'Sí, en nuestro portfolio tenéis vídeos y fotografías de eventos, deportes, tradición y clubes que hemos cubierto.',
   },
+  {
+    q: '¿Quién forma el equipo de CONCA Films?',
+    a: 'Pedro, Pablo y Juan. Un equipo de tres, con equipo propio (cámaras Canon, Lumix y Sony, dron y estabilizadores) y sin intermediarios.',
+  },
+  {
+    q: '¿Podéis cubrir vídeo y fotografía a la vez en el mismo evento?',
+    a: 'Sí, podemos combinar ambos servicios en la misma cobertura si el evento lo necesita.',
+  },
+  {
+    q: '¿Tenéis experiencia con discotecas, clubes y sesiones de DJ?',
+    a: 'Sí, cubrimos sesiones de DJ y vida nocturna, además de bodas, festivales, eventos corporativos y deportivos.',
+  },
+  {
+    q: '¿Hacéis fotografía o vídeo deportivo?',
+    a: 'Sí, cubrimos eventos deportivos como motociclismo, hípica y competiciones locales, entre otros.',
+  },
+  {
+    q: '¿Grabáis spots publicitarios para marcas?',
+    a: 'Sí, producimos spots publicitarios y contenido de marca, con rodaje y edición propios de principio a fin.',
+  },
+  {
+    q: '¿Cómo es el proceso, desde que contacto hasta que recibo el material?',
+    a: 'Nos escribes contándonos el evento (fecha, lugar y qué necesitas), te enviamos un presupuesto ajustado, cubrimos el evento con equipo propio y entregamos el material editado en el plazo acordado.',
+  },
+  {
+    q: '¿Con cuánta antelación debo reservar la cobertura de mi evento?',
+    a: 'Cuanto antes mejor, sobre todo en fechas de alta demanda (bodas, festivales, fin de curso). Escríbenos con tu fecha y te confirmamos disponibilidad.',
+  },
+  {
+    q: '¿En qué formato entregáis el material?',
+    a: 'Vídeo en alta calidad, listo para redes o proyección, y fotografías en alta resolución, ya editadas y seleccionadas.',
+  },
+  {
+    q: '¿Usáis dron en las coberturas?',
+    a: 'Sí, contamos con dron propio y lo incorporamos cuando el evento y la normativa del espacio lo permiten.',
+  },
+  {
+    q: '¿Puedo pedir cambios en el montaje o en la selección final?',
+    a: 'Sí, revisamos el resultado contigo y ajustamos lo necesario antes de la entrega final.',
+  },
+  {
+    q: '¿Qué pasa si el evento se aplaza o se cancela?',
+    a: 'Lo hablamos contigo caso por caso para reprogramar la cobertura sin problema.',
+  },
 ]
 
 export default function Contacto() {
+  const [faqOpen, setFaqOpen] = useState(false)
   useSeo({
     title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
     description:
@@ -116,18 +163,54 @@ export default function Contacto() {
             </p>
           </div>
         </SectionReveal>
-        <div className="flex flex-col gap-4">
-          {FAQS.map((item, i) => (
-            <SectionReveal key={item.q} delay={i * 0.05}>
-              <div className="liquid-glass rounded-[1.25rem] p-6">
-                <h3 className="font-heading italic text-white text-lg md:text-xl tracking-[-0.5px]">{item.q}</h3>
-                <p className="mt-2 text-sm md:text-base text-white/50 font-body font-light leading-relaxed">
-                  {item.a}
-                </p>
-              </div>
-            </SectionReveal>
-          ))}
-        </div>
+
+        <SectionReveal>
+          <div className="liquid-glass rounded-[1.25rem] overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setFaqOpen((v) => !v)}
+              aria-expanded={faqOpen}
+              className="w-full flex items-center justify-between gap-4 p-6 text-left"
+            >
+              <h3 className="font-heading italic text-white text-lg md:text-xl tracking-[-0.5px]">
+                Todo lo que necesitas saber
+              </h3>
+              <motion.span
+                animate={{ rotate: faqOpen ? 45 : 0 }}
+                transition={{ duration: 0.25 }}
+                className="flex-shrink-0 w-8 h-8 rounded-full liquid-glass flex items-center justify-center text-white/70 text-xl leading-none"
+                aria-hidden="true"
+              >
+                +
+              </motion.span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {faqOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex flex-col divide-y divide-white/[0.06]">
+                    {FAQS.map((item) => (
+                      <div key={item.q} className="px-6 pb-6 pt-4 first:pt-0">
+                        <h4 className="font-heading italic text-white text-base md:text-lg tracking-[-0.3px]">
+                          {item.q}
+                        </h4>
+                        <p className="mt-2 text-sm md:text-base text-white/50 font-body font-light leading-relaxed">
+                          {item.a}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </SectionReveal>
       </section>
     </Page>
   )

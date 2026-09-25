@@ -52,13 +52,6 @@ const ROUTES = [
     breadcrumbLabel: 'Clientes',
   },
   {
-    path: '/valencia',
-    title: 'Producción audiovisual de eventos en Valencia | CONCA Films',
-    description:
-      'Cobertura de eventos en Valencia: bodas, eventos corporativos, galerías, agencias y centros académicos. Vídeo y fotografía profesional, equipo propio.',
-    breadcrumbLabel: 'Valencia',
-  },
-  {
     path: '/contacto',
     title: 'Contacto — Productora audiovisual en Cuenca | CONCA Films',
     description:
@@ -95,6 +88,50 @@ const ROUTES = [
       {
         q: '¿Puedo ver trabajos anteriores?',
         a: 'Sí, en nuestro portfolio tenéis vídeos y fotografías de eventos, deportes, tradición y clubes que hemos cubierto.',
+      },
+      {
+        q: '¿Quién forma el equipo de CONCA Films?',
+        a: 'Pedro, Pablo y Juan. Un equipo de tres, con equipo propio (cámaras Canon, Lumix y Sony, dron y estabilizadores) y sin intermediarios.',
+      },
+      {
+        q: '¿Podéis cubrir vídeo y fotografía a la vez en el mismo evento?',
+        a: 'Sí, podemos combinar ambos servicios en la misma cobertura si el evento lo necesita.',
+      },
+      {
+        q: '¿Tenéis experiencia con discotecas, clubes y sesiones de DJ?',
+        a: 'Sí, cubrimos sesiones de DJ y vida nocturna, además de bodas, festivales, eventos corporativos y deportivos.',
+      },
+      {
+        q: '¿Hacéis fotografía o vídeo deportivo?',
+        a: 'Sí, cubrimos eventos deportivos como motociclismo, hípica y competiciones locales, entre otros.',
+      },
+      {
+        q: '¿Grabáis spots publicitarios para marcas?',
+        a: 'Sí, producimos spots publicitarios y contenido de marca, con rodaje y edición propios de principio a fin.',
+      },
+      {
+        q: '¿Cómo es el proceso, desde que contacto hasta que recibo el material?',
+        a: 'Nos escribes contándonos el evento (fecha, lugar y qué necesitas), te enviamos un presupuesto ajustado, cubrimos el evento con equipo propio y entregamos el material editado en el plazo acordado.',
+      },
+      {
+        q: '¿Con cuánta antelación debo reservar la cobertura de mi evento?',
+        a: 'Cuanto antes mejor, sobre todo en fechas de alta demanda (bodas, festivales, fin de curso). Escríbenos con tu fecha y te confirmamos disponibilidad.',
+      },
+      {
+        q: '¿En qué formato entregáis el material?',
+        a: 'Vídeo en alta calidad, listo para redes o proyección, y fotografías en alta resolución, ya editadas y seleccionadas.',
+      },
+      {
+        q: '¿Usáis dron en las coberturas?',
+        a: 'Sí, contamos con dron propio y lo incorporamos cuando el evento y la normativa del espacio lo permiten.',
+      },
+      {
+        q: '¿Puedo pedir cambios en el montaje o en la selección final?',
+        a: 'Sí, revisamos el resultado contigo y ajustamos lo necesario antes de la entrega final.',
+      },
+      {
+        q: '¿Qué pasa si el evento se aplaza o se cancela?',
+        a: 'Lo hablamos contigo caso por caso para reprogramar la cobertura sin problema.',
       },
     ],
   },
