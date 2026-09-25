@@ -10,3 +10,5 @@ yarn-error.log*
 
 # Backup local de imágenes originales (también en historial git)
 originals/
+
+desktop.ini
